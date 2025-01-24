@@ -19,3 +19,6 @@ func act_on_decisions():
 	var direction = phase * prev_direction + (1-phase) * next_direction
 	velocity = direction * speed
 	move_and_slide()
+
+func influence():
+	print("I'm being influenced")

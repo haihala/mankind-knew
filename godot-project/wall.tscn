@@ -6,6 +6,7 @@ size = Vector2(200, 200)
 [sub_resource type="CanvasTexture" id="CanvasTexture_3xcxu"]
 
 [node name="Wall" type="StaticBody2D"]
+collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_175p2")
