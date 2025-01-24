@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cuf140fj6iemi"]
+[gd_scene load_steps=5 format=3 uid="uid://cuf140fj6iemi"]
 
 [ext_resource type="PackedScene" uid="uid://be55yifao4fp" path="res://player.tscn" id="1_uc7q8"]
 [ext_resource type="PackedScene" uid="uid://dvupfo6cbega2" path="res://wall.tscn" id="2_wy0le"]
 [ext_resource type="PackedScene" uid="uid://ddjdvmj3ommdu" path="res://npc.tscn" id="3_p6jtc"]
-[ext_resource type="PackedScene" uid="uid://ddly54cbm84af" path="res://projectile.tscn" id="4_ph0mn"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_qkyk7"]
 
@@ -36,7 +35,3 @@ position = Vector2(482, 256)
 
 [node name="NPC" parent="." instance=ExtResource("3_p6jtc")]
 position = Vector2(691, 330)
-
-[node name="Projectile" parent="." instance=ExtResource("4_ph0mn")]
-position = Vector2(654, 332)
-speed = 100.0
