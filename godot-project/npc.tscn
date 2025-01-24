@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddjdvmj3ommdu"]
+
+[ext_resource type="Script" path="res://npc.gd" id="1_f8a8o"]
+[ext_resource type="Texture2D" uid="uid://dsmfh4rp5r5db" path="res://person-hollow.png" id="2_sq8hf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j8cp6"]
+
+[node name="NPC" type="CharacterBody2D" groups=["npc"]]
+script = ExtResource("1_f8a8o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_j8cp6")
+
+[node name="Person-hollow" type="Sprite2D" parent="."]
+position = Vector2(0, -2)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_sq8hf")
+
+[node name="DecisionTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="ShotTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="DecisionTimer" to="." method="update_decisions"]
+[connection signal="timeout" from="ShotTimer" to="." method="shoot"]
