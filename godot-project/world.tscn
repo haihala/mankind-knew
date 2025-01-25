@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://cuf140fj6iemi"]
 
-[ext_resource type="PackedScene" uid="uid://bac4pqgj5oxjo" path="res://stats.tscn" id="1_853hc"]
+[ext_resource type="PackedScene" uid="uid://2rxvv5x5j3mm" path="res://stats.tscn" id="1_853hc"]
 [ext_resource type="PackedScene" uid="uid://be55yifao4fp" path="res://player.tscn" id="1_uc7q8"]
 [ext_resource type="PackedScene" uid="uid://dvupfo6cbega2" path="res://wall.tscn" id="2_wy0le"]
-[ext_resource type="PackedScene" uid="uid://rgdltf18q5d2" path="res://npc_spawner.tscn" id="3_23yi1"]
-[ext_resource type="PackedScene" uid="uid://o3k8pn2ko6av" path="res://end_screen.tscn" id="5_7jo1d"]
+[ext_resource type="PackedScene" path="res://npc_spawner.tscn" id="3_23yi1"]
+[ext_resource type="PackedScene" uid="uid://bt4epbcutl3xv" path="res://end_screen.tscn" id="5_7jo1d"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_qkyk7"]
 
