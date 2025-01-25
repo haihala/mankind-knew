@@ -83,6 +83,7 @@ radius = 12.0
 height = 36.5
 
 [node name="NPC" type="CharacterBody2D" groups=["npc"]]
+scale = Vector2(2, 2)
 collision_layer = 6
 script = ExtResource("1_f8a8o")
 colors = Array[Color]([Color(1, 0.207843, 0.207843, 1), Color(0, 0.827451, 0.278431, 1), Color(0, 0.666667, 1, 1), Color(0.690196, 0.113725, 0.854902, 1), Color(1, 0.788235, 0, 1)])

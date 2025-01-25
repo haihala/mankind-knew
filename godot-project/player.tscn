@@ -37,6 +37,7 @@ shader_parameter/beliefs = PackedFloat32Array(0.194, 0.556)
 [sub_resource type="CanvasTexture" id="CanvasTexture_wedoy"]
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+scale = Vector2(2, 2)
 collision_layer = 6
 script = ExtResource("1_n0b4w")
 projectile_scene = ExtResource("2_j4an7")
@@ -46,31 +47,31 @@ position = Vector2(0, 4.392)
 shape = SubResource("CapsuleShape2D_t7wc1")
 
 [node name="Body" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 13.334)
+position = Vector2(0, 16.736)
 scale = Vector2(0.08, 0.08)
 sprite_frames = SubResource("SpriteFrames_t6r6m")
 
 [node name="Head" type="Sprite2D" parent="."]
-scale = Vector2(0.05, 0.05)
+scale = Vector2(0.08, 0.08)
 texture = ExtResource("3_423n1")
 
 [node name="HatShaftFill" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_ko1ec")
-position = Vector2(22.707, -12.25)
-scale = Vector2(8, 25.5)
+position = Vector2(22.707, -13.25)
+scale = Vector2(11, 25.5)
 texture = SubResource("CanvasTexture_xx132")
 
 [node name="HatShaft" type="Node2D" parent="."]
-position = Vector2(0, -9)
+position = Vector2(0, -14)
 
 [node name="Left" type="Sprite2D" parent="HatShaft"]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(-4, 0)
+position = Vector2(-6, 0)
 texture = SubResource("CanvasTexture_wedoy")
 
 [node name="Right" type="Sprite2D" parent="HatShaft"]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(4, 0)
+position = Vector2(6, 0)
 texture = SubResource("CanvasTexture_wedoy")
 
 [node name="Hat" type="Sprite2D" parent="."]
