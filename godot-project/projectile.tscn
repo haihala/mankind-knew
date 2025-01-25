@@ -32,12 +32,16 @@ position = Vector2(0, 1.5)
 scale = Vector2(0.08, 0.08)
 texture = ExtResource("4_gmjl6")
 
+[node name="SpawnSound" type="AudioStreamPlayer2D" parent="."]
+volume_db = -18.035
+
 [node name="DespawnTimer" type="Timer" parent="."]
 one_shot = true
 autostart = true
 
-[node name="SpawnSound" type="AudioStreamPlayer2D" parent="."]
-volume_db = -18.035
+[node name="SizeAdjustmentTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
 
 [connection signal="body_entered" from="." to="." method="collision"]
 [connection signal="timeout" from="DespawnTimer" to="." method="queue_free"]
