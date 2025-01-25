@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bac4pqgj5oxjo"]
+
+[ext_resource type="Script" path="res://stats.gd" id="1_v6oue"]
+
+[node name="Stats" type="Node"]
+script = ExtResource("1_v6oue")
+
+[node name="RecordTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="RecordTimer" to="." method="record_state"]
