@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ddjdvmj3ommdu"]
+[gd_scene load_steps=25 format=3 uid="uid://ddjdvmj3ommdu"]
 
 [ext_resource type="Script" path="res://npc.gd" id="1_f8a8o"]
 [ext_resource type="PackedScene" uid="uid://ddly54cbm84af" path="res://projectile.tscn" id="2_rifn1"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://ba3wxfij1bv6p" path="res://head-back.png" id="7_n08ip"]
 [ext_resource type="Texture2D" uid="uid://cywgpxoqroo1y" path="res://head-front.png" id="8_y7txn"]
 [ext_resource type="Texture2D" uid="uid://d4l8cmg46qquc" path="res://eyes.png" id="9_b2x7f"]
+[ext_resource type="Texture2D" uid="uid://c38c532l01bxn" path="res://head-outline.png" id="9_occuo"]
+[ext_resource type="Texture2D" uid="uid://bjathuci5lsn1" path="res://shadow.png" id="10_ohbyq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tlt4c"]
 animations = [{
@@ -100,7 +102,7 @@ texture = ExtResource("7_n08ip")
 rotation = 2.61799
 script = ExtResource("4_ggpmd")
 border_thickness = 0.2
-offset = 14.0
+offset = 16.0
 max_size = 30.0
 dead_angle = 2.094
 
@@ -165,9 +167,23 @@ one_shot = true
 autostart = true
 
 [node name="Head-front" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.501961)
 z_index = 10
 scale = Vector2(0.08, 0.08)
 texture = ExtResource("8_y7txn")
+
+[node name="Head-outline" type="Sprite2D" parent="."]
+z_index = 10
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("9_occuo")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+z_index = -1000
+z_as_relative = false
+position = Vector2(0, 3)
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("10_ohbyq")
+offset = Vector2(0, 250)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2.75)
