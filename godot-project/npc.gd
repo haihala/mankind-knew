@@ -92,5 +92,5 @@ func influence(belief: Belief) -> void:
 	add_belief(belief, Projectile.size)
 
 func shoot_towards(target: Node2D) -> void:
-	shoot(position.angle_to(target.position))
+	shoot((target.position - position).angle())
 	

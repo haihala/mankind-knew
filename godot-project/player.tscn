@@ -7,7 +7,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_j8cp6"]
 radius = 11.0454
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 6
 script = ExtResource("1_n0b4w")
 projectile_scene = ExtResource("2_j4an7")
@@ -15,16 +15,30 @@ projectile_scene = ExtResource("2_j4an7")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_j8cp6")
 
-[node name="Person-hollow" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -2)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("2_2nf7a")
 
 [node name="ExtractTimer" type="Timer" parent="."]
-autostart = true
+wait_time = 0.5
+one_shot = true
 
 [node name="ReleaseTimer" type="Timer" parent="."]
+wait_time = 10.0
 autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(0.970195, 0.417937, 0.452515, 1)
+custom_minimum_size = Vector2(0, 50)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [connection signal="timeout" from="ExtractTimer" to="." method="extract"]
 [connection signal="timeout" from="ReleaseTimer" to="." method="release"]
