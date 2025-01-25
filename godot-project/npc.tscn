@@ -52,27 +52,22 @@ dead_angle = 2.094
 
 [node name="Belief1" type="Sprite2D" parent="BeliefVisualizer"]
 material = SubResource("ShaderMaterial_vgb0c")
-scale = Vector2(20, 20)
 texture = SubResource("CanvasTexture_mpo78")
 
 [node name="Belief2" type="Sprite2D" parent="BeliefVisualizer"]
 material = SubResource("ShaderMaterial_8pklu")
-scale = Vector2(20, 20)
 texture = SubResource("CanvasTexture_mpo78")
 
 [node name="Belief3" type="Sprite2D" parent="BeliefVisualizer"]
 material = SubResource("ShaderMaterial_8gu66")
-scale = Vector2(20, 20)
 texture = SubResource("CanvasTexture_mpo78")
 
 [node name="Belief4" type="Sprite2D" parent="BeliefVisualizer"]
 material = SubResource("ShaderMaterial_bng6r")
-scale = Vector2(20, 20)
 texture = SubResource("CanvasTexture_mpo78")
 
 [node name="Belief5" type="Sprite2D" parent="BeliefVisualizer"]
 material = SubResource("ShaderMaterial_0g0s1")
-scale = Vector2(20, 20)
 texture = SubResource("CanvasTexture_mpo78")
 
 [node name="SmoothTimer" type="Timer" parent="BeliefVisualizer"]
