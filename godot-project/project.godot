@@ -22,6 +22,12 @@ window/stretch/mode="canvas_items"
 [global_group]
 
 npc=""
+stats=""
+spawner=""
+
+[gui]
+
+theme/custom="res://theme.tres"
 
 [input]
 

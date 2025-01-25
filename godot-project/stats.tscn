@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://stats.gd" id="1_v6oue"]
 
-[node name="Stats" type="Node"]
+[node name="Stats" type="Node" groups=["stats"]]
 script = ExtResource("1_v6oue")
 
 [node name="RecordTimer" type="Timer" parent="."]
