@@ -24,7 +24,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 15.0
 }]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ko1ec"]

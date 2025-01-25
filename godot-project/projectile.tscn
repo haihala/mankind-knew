@@ -10,7 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://dcsshv4fuo7na" path="res://bubble-02.ogg" id="8_bqjdg"]
 [ext_resource type="AudioStream" uid="uid://dblmpe3sih1k3" path="res://bubble-03.ogg" id="9_r20ka"]
 [ext_resource type="AudioStream" uid="uid://dvcjwrkkhcvev" path="res://bubble-04.ogg" id="10_e2g1u"]
-[ext_resource type="PackedScene" uid="uid://d14kvscht8r3p" path="res://sparkle.tscn" id="11_s8a6b"]
+[ext_resource type="PackedScene" path="res://sparkle.tscn" id="11_s8a6b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ed0ho"]
 radius = 9.0
