@@ -12,9 +12,12 @@ var touched: Array[Node] = []
 
 func _ready() -> void:
 	$Sprite.texture = sprites[belief]
-	$SpawnSound.stream = sounds.pick_random()
-	$SpawnSound.play()
 	$Sprite.rotation = -rotation
+	
+	var stats = get_tree().get_first_node_in_group("stats")
+	if not stats.done:
+		$SpawnSound.stream = sounds.pick_random()
+		$SpawnSound.play()
 
 func _physics_process(delta: float) -> void:
 	var velocity = Vector2.from_angle(rotation) * speed
