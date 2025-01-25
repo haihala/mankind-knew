@@ -85,14 +85,14 @@ collision_layer = 6
 script = ExtResource("1_f8a8o")
 projectile_scene = ExtResource("2_rifn1")
 
-[node name="Head-back" type="Sprite2D" parent="."]
-scale = Vector2(0.08, 0.08)
-texture = ExtResource("7_n08ip")
-
 [node name="Body" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 16.736)
 scale = Vector2(0.08, 0.08)
 sprite_frames = SubResource("SpriteFrames_tlt4c")
+
+[node name="Head-back" type="Sprite2D" parent="."]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("7_n08ip")
 
 [node name="BeliefVisualizer" type="Node2D" parent="."]
 rotation = 2.61799
@@ -104,7 +104,6 @@ max_size = 30.0
 dead_angle = 2.094
 
 [node name="Belief1" type="Node2D" parent="BeliefVisualizer"]
-scale = Vector2(21.275, 21.275)
 
 [node name="Core" type="Sprite2D" parent="BeliefVisualizer/Belief1"]
 material = SubResource("ShaderMaterial_a78gt")
@@ -113,6 +112,7 @@ texture = SubResource("CanvasTexture_mpo78")
 [node name="Outline" type="Sprite2D" parent="BeliefVisualizer/Belief1"]
 z_index = -1
 material = SubResource("ShaderMaterial_plwf0")
+scale = Vector2(1, 1)
 texture = SubResource("CanvasTexture_mpo78")
 
 [node name="Belief2" type="Node2D" parent="BeliefVisualizer"]

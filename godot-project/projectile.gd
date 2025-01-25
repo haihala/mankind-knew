@@ -10,6 +10,12 @@ var belief: NPC.Belief
 var creator: Node
 var touched: Array[Node] = []
 
+# Ammu ajatuskuplan kasvu yli
+# Sparkle kun osuu
+# Pelaaja ehkä interact pois?
+# Pelaaja ehkä 
+
+
 func _ready() -> void:
 	$Sprite.texture = sprites[belief]
 	$Sprite.rotation = -rotation
