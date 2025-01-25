@@ -1,11 +1,40 @@
-[gd_scene load_steps=5 format=3 uid="uid://be55yifao4fp"]
+[gd_scene load_steps=14 format=4 uid="uid://be55yifao4fp"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_n0b4w"]
-[ext_resource type="Texture2D" uid="uid://8okb6a2c3qhr" path="res://person-filled.png" id="2_2nf7a"]
 [ext_resource type="PackedScene" uid="uid://ddly54cbm84af" path="res://projectile.tscn" id="2_j4an7"]
+[ext_resource type="Texture2D" uid="uid://hkshnlbh4jy5" path="res://player-head.png" id="3_423n1"]
+[ext_resource type="Shader" path="res://hat_shaft_fill.gdshader" id="4_wc2p6"]
+[ext_resource type="Texture2D" uid="uid://b674dpymmg5lc" path="res://player-walk-1.png" id="5_7vk7d"]
+[ext_resource type="Texture2D" uid="uid://c2nudj16orlhr" path="res://player-walk-2.png" id="6_t84eb"]
+[ext_resource type="Texture2D" uid="uid://d4l8cmg46qquc" path="res://eyes.png" id="7_pls7t"]
+[ext_resource type="Texture2D" uid="uid://g3lc7mlgfytf" path="res://player-hat.png" id="8_fusqb"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_j8cp6"]
-radius = 11.0454
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t7wc1"]
+radius = 8.0
+height = 25.216
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t6r6m"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("5_7vk7d")
+}, {
+"duration": 3.0,
+"texture": ExtResource("6_t84eb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ko1ec"]
+shader = ExtResource("4_wc2p6")
+shader_parameter/colors = PackedVector4Array(0, 0, 1, 1, 1, 0, 0, 1)
+shader_parameter/beliefs = PackedFloat32Array(0.194, 0.556)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_xx132"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_wedoy"]
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 6
@@ -13,27 +42,43 @@ script = ExtResource("1_n0b4w")
 projectile_scene = ExtResource("2_j4an7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_j8cp6")
+position = Vector2(0, 4.392)
+shape = SubResource("CapsuleShape2D_t7wc1")
 
-[node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(0, -2)
+[node name="Body" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 13.334)
+scale = Vector2(0.08, 0.08)
+sprite_frames = SubResource("SpriteFrames_t6r6m")
+
+[node name="Head" type="Sprite2D" parent="."]
 scale = Vector2(0.05, 0.05)
-texture = ExtResource("2_2nf7a")
+texture = ExtResource("3_423n1")
 
-[node name="ReleaseTimer" type="Timer" parent="."]
-wait_time = 10.0
-autostart = true
+[node name="HatShaftFill" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ko1ec")
+position = Vector2(22.707, -12.25)
+scale = Vector2(8, 25.5)
+texture = SubResource("CanvasTexture_xx132")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="HatShaft" type="Node2D" parent="."]
+position = Vector2(0, -9)
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-modulate = Color(0.970195, 0.417937, 0.452515, 1)
-custom_minimum_size = Vector2(0, 50)
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="Left" type="Sprite2D" parent="HatShaft"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-4, 0)
+texture = SubResource("CanvasTexture_wedoy")
 
-[connection signal="timeout" from="ReleaseTimer" to="." method="release"]
+[node name="Right" type="Sprite2D" parent="HatShaft"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(4, 0)
+texture = SubResource("CanvasTexture_wedoy")
+
+[node name="Hat" type="Sprite2D" parent="."]
+position = Vector2(25, -21)
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("8_fusqb")
+
+[node name="Eyes" type="Sprite2D" parent="."]
+position = Vector2(22, 9)
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("7_pls7t")
