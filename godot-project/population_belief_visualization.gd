@@ -18,5 +18,5 @@ func _draw() -> void:
 				bar_width,
 				height
 			)
-			draw_rect(rect, NPC.colors[belief])
+			draw_rect(rect, NPC.new().colors[belief])
 			bottom -= height

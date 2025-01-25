@@ -15,7 +15,6 @@ var touched: Array[Node] = []
 # Pelaaja ehkä interact pois?
 # Pelaaja ehkä 
 
-
 func _ready() -> void:
 	$Sprite.texture = sprites[belief]
 	$Sprite.rotation = -rotation

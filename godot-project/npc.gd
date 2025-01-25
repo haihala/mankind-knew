@@ -2,7 +2,8 @@ extends CharacterBody2D
 class_name NPC
 
 enum Belief {RED, GREEN, BLUE, PURPLE, ORANGE}
-static var colors = [Color.RED, Color.GREEN, Color.BLUE, Color.PURPLE, Color.ORANGE]
+@export var colors: Array[Color] = [Color.RED, Color.GREEN, Color.BLUE, Color.PURPLE, Color.ORANGE]
+@export var border_colors: Array[Color] = [Color.RED, Color.GREEN, Color.BLUE, Color.PURPLE, Color.ORANGE]
 
 @export var projectile_scene: PackedScene
 @export var speed: float = 30

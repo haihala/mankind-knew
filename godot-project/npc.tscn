@@ -97,7 +97,6 @@ texture = ExtResource("7_n08ip")
 [node name="BeliefVisualizer" type="Node2D" parent="."]
 rotation = 2.61799
 script = ExtResource("4_ggpmd")
-border_darkness = 0.7
 border_thickness = 0.2
 offset = 14.0
 max_size = 30.0
