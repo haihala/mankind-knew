@@ -20,10 +20,6 @@ position = Vector2(0, -2)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("2_2nf7a")
 
-[node name="ExtractTimer" type="Timer" parent="."]
-wait_time = 0.5
-one_shot = true
-
 [node name="ReleaseTimer" type="Timer" parent="."]
 wait_time = 10.0
 autostart = true
@@ -40,5 +36,4 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[connection signal="timeout" from="ExtractTimer" to="." method="extract"]
 [connection signal="timeout" from="ReleaseTimer" to="." method="release"]

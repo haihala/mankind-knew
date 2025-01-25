@@ -6,28 +6,16 @@ extends CharacterBody2D
 @export var release_interval: float = 10
 
 var beliefs: Dictionary = {}
-var total_belief: float = 0 
-
+var total_belief: float = 0
 
 func _physics_process(_delta: float) -> void:
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
 	velocity = direction * speed / max(1, total_belief)
 
-	if Input.is_action_just_pressed("interact") and $ExtractTimer.is_stopped():
-		extract()
-
 	$CanvasLayer/ColorRect.scale.x = 1-($ReleaseTimer.time_left / release_interval)
 
 	z_index = position.y * 10
 	move_and_slide()
-
-func extract() -> void:
-	for npc in get_tree().get_nodes_in_group("npc"):
-		if (position - npc.position).length() < extract_distance:
-			npc.shoot_towards(self)
-
-	if Input.is_action_pressed("interact"):
-		$ExtractTimer.start()
 
 func release() -> void:
 	while not beliefs.is_empty():
