@@ -29,7 +29,6 @@ func extract() -> void:
 		$ExtractTimer.start()
 
 func release() -> void:
-	print("release")
 	while not beliefs.is_empty():
 		var projectile = projectile_scene.instantiate()
 		projectile.rotation = randf()*PI*2
