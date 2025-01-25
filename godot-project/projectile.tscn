@@ -25,6 +25,7 @@ sounds = Array[AudioStream]([ExtResource("7_yguma"), ExtResource("8_bqjdg"), Ext
 shape = SubResource("CircleShape2D_ed0ho")
 
 [node name="Sprite" type="Sprite2D" parent="."]
+z_index = 20
 position = Vector2(0, 1.5)
 scale = Vector2(0.08, 0.08)
 texture = ExtResource("4_gmjl6")

@@ -5,7 +5,8 @@ enum Belief {RED, GREEN, BLUE, PURPLE, ORANGE}
 static var colors = [Color.RED, Color.GREEN, Color.BLUE, Color.PURPLE, Color.ORANGE]
 
 @export var projectile_scene: PackedScene
-@export var speed: float = 50
+@export var speed: float = 30
+@export var eyes_offset: float = 7
 @export var max_direction_influence_per_npc: float = 0.2
 var next_direction: Vector2
 var prev_direction: Vector2
@@ -14,6 +15,7 @@ var total_belief: float = 0
 
 func _ready() -> void:
 	assert(colors.size() == Belief.values().size())
+	$Body.play("default")
 
 	for belief in Belief.values():
 		beliefs[belief] = 0
@@ -68,6 +70,7 @@ func act_on_decisions() -> void:
 	var phase = $DecisionTimer.time_left / $DecisionTimer.wait_time
 	var direction = phase * prev_direction + (1-phase) * next_direction
 	velocity = direction * speed
+	$Eyes.position = direction.normalized() * eyes_offset
 	move_and_slide()
 
 func add_belief(belief: Belief, amount: float) -> void:

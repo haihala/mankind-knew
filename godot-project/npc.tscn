@@ -1,73 +1,162 @@
-[gd_scene load_steps=13 format=3 uid="uid://ddjdvmj3ommdu"]
+[gd_scene load_steps=23 format=3 uid="uid://ddjdvmj3ommdu"]
 
 [ext_resource type="Script" path="res://npc.gd" id="1_f8a8o"]
 [ext_resource type="PackedScene" uid="uid://ddly54cbm84af" path="res://projectile.tscn" id="2_rifn1"]
-[ext_resource type="Texture2D" uid="uid://dsmfh4rp5r5db" path="res://person-hollow.png" id="2_sq8hf"]
 [ext_resource type="Script" path="res://npc_belief_visualizer.gd" id="4_ggpmd"]
+[ext_resource type="Texture2D" uid="uid://dlfvckp1xub78" path="res://walk-1.png" id="5_1qpc0"]
 [ext_resource type="Shader" path="res://npc_belief_visualization.gdshader" id="5_2lq31"]
+[ext_resource type="Texture2D" uid="uid://biw2pe7mtptdj" path="res://walk-2.png" id="6_3r1ct"]
+[ext_resource type="Texture2D" uid="uid://ba3wxfij1bv6p" path="res://head-back.png" id="7_n08ip"]
+[ext_resource type="Texture2D" uid="uid://cywgpxoqroo1y" path="res://head-front.png" id="8_y7txn"]
+[ext_resource type="Texture2D" uid="uid://d4l8cmg46qquc" path="res://eyes.png" id="9_b2x7f"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_j8cp6"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_tlt4c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_1qpc0")
+}, {
+"duration": 2.0,
+"texture": ExtResource("6_3r1ct")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vgb0c"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a78gt"]
 shader = ExtResource("5_2lq31")
 shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/padding = 0.448
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_mpo78"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8pklu"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_plwf0"]
 shader = ExtResource("5_2lq31")
 shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/padding = 0.496
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8gu66"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ua1df"]
 shader = ExtResource("5_2lq31")
 shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/padding = 0.2
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bng6r"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kkuth"]
 shader = ExtResource("5_2lq31")
 shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/padding = 0.2
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0g0s1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v5uvs"]
 shader = ExtResource("5_2lq31")
 shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/padding = 0.2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4mr5x"]
+shader = ExtResource("5_2lq31")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/padding = 0.2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1jdf0"]
+shader = ExtResource("5_2lq31")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/padding = 0.2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mww58"]
+shader = ExtResource("5_2lq31")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/padding = 0.2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6aumn"]
+shader = ExtResource("5_2lq31")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/padding = 0.2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uxioa"]
+shader = ExtResource("5_2lq31")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/padding = 0.2
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2teft"]
+radius = 12.0
+height = 36.5
 
 [node name="NPC" type="CharacterBody2D" groups=["npc"]]
 collision_layer = 6
 script = ExtResource("1_f8a8o")
 projectile_scene = ExtResource("2_rifn1")
-speed = 0.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_j8cp6")
+[node name="Head-back" type="Sprite2D" parent="."]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("7_n08ip")
 
-[node name="Person-hollow" type="Sprite2D" parent="."]
-position = Vector2(0, -2)
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("2_sq8hf")
+[node name="Body" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 16.736)
+scale = Vector2(0.08, 0.08)
+sprite_frames = SubResource("SpriteFrames_tlt4c")
 
 [node name="BeliefVisualizer" type="Node2D" parent="."]
 rotation = 2.61799
 script = ExtResource("4_ggpmd")
-offset = 10.0
+border_darkness = 0.7
+border_thickness = 0.2
+offset = 14.0
+max_size = 30.0
 dead_angle = 2.094
 
-[node name="Belief1" type="Sprite2D" parent="BeliefVisualizer"]
-material = SubResource("ShaderMaterial_vgb0c")
+[node name="Belief1" type="Node2D" parent="BeliefVisualizer"]
+scale = Vector2(21.275, 21.275)
+
+[node name="Core" type="Sprite2D" parent="BeliefVisualizer/Belief1"]
+material = SubResource("ShaderMaterial_a78gt")
 texture = SubResource("CanvasTexture_mpo78")
 
-[node name="Belief2" type="Sprite2D" parent="BeliefVisualizer"]
-material = SubResource("ShaderMaterial_8pklu")
+[node name="Outline" type="Sprite2D" parent="BeliefVisualizer/Belief1"]
+z_index = -1
+material = SubResource("ShaderMaterial_plwf0")
 texture = SubResource("CanvasTexture_mpo78")
 
-[node name="Belief3" type="Sprite2D" parent="BeliefVisualizer"]
-material = SubResource("ShaderMaterial_8gu66")
+[node name="Belief2" type="Node2D" parent="BeliefVisualizer"]
+
+[node name="Core" type="Sprite2D" parent="BeliefVisualizer/Belief2"]
+material = SubResource("ShaderMaterial_ua1df")
 texture = SubResource("CanvasTexture_mpo78")
 
-[node name="Belief4" type="Sprite2D" parent="BeliefVisualizer"]
-material = SubResource("ShaderMaterial_bng6r")
+[node name="Outline" type="Sprite2D" parent="BeliefVisualizer/Belief2"]
+z_index = -1
+material = SubResource("ShaderMaterial_kkuth")
 texture = SubResource("CanvasTexture_mpo78")
 
-[node name="Belief5" type="Sprite2D" parent="BeliefVisualizer"]
-material = SubResource("ShaderMaterial_0g0s1")
+[node name="Belief3" type="Node2D" parent="BeliefVisualizer"]
+
+[node name="Core" type="Sprite2D" parent="BeliefVisualizer/Belief3"]
+material = SubResource("ShaderMaterial_v5uvs")
+texture = SubResource("CanvasTexture_mpo78")
+
+[node name="Outline" type="Sprite2D" parent="BeliefVisualizer/Belief3"]
+z_index = -1
+material = SubResource("ShaderMaterial_4mr5x")
+texture = SubResource("CanvasTexture_mpo78")
+
+[node name="Belief4" type="Node2D" parent="BeliefVisualizer"]
+
+[node name="Core" type="Sprite2D" parent="BeliefVisualizer/Belief4"]
+material = SubResource("ShaderMaterial_1jdf0")
+texture = SubResource("CanvasTexture_mpo78")
+
+[node name="Outline" type="Sprite2D" parent="BeliefVisualizer/Belief4"]
+z_index = -1
+material = SubResource("ShaderMaterial_mww58")
+texture = SubResource("CanvasTexture_mpo78")
+
+[node name="Belief5" type="Node2D" parent="BeliefVisualizer"]
+
+[node name="Core" type="Sprite2D" parent="BeliefVisualizer/Belief5"]
+material = SubResource("ShaderMaterial_6aumn")
+texture = SubResource("CanvasTexture_mpo78")
+
+[node name="Outline" type="Sprite2D" parent="BeliefVisualizer/Belief5"]
+z_index = -1
+material = SubResource("ShaderMaterial_uxioa")
 texture = SubResource("CanvasTexture_mpo78")
 
 [node name="SmoothTimer" type="Timer" parent="BeliefVisualizer"]
@@ -75,12 +164,26 @@ wait_time = 0.5
 one_shot = true
 autostart = true
 
+[node name="Head-front" type="Sprite2D" parent="."]
+z_index = 10
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("8_y7txn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.75)
+shape = SubResource("CapsuleShape2D_2teft")
+
 [node name="DecisionTimer" type="Timer" parent="."]
 autostart = true
 
 [node name="ShotTimer" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
+
+[node name="Eyes" type="Sprite2D" parent="."]
+z_index = 15
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("9_b2x7f")
 
 [connection signal="timeout" from="DecisionTimer" to="." method="update_decisions"]
 [connection signal="timeout" from="ShotTimer" to="." method="shoot"]

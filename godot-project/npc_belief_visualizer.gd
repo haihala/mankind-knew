@@ -1,5 +1,7 @@
 extends Node2D
 
+@export_range(0, 1) var border_darkness: float
+@export_range(0, 1) var border_thickness: float
 @export_range(0, 100) var offset: float
 @export_range(0, 30) var max_size: float = 20
 @export_range(0, 2*PI) var dead_angle: float
@@ -10,9 +12,15 @@ var prev_total: float
 
 @onready var total_angle = (2*PI)-dead_angle
 
+var children_setup = false
+
 func _process(_delta: float) -> void:
 	if get_parent().beliefs != target:
 		retarget()
+
+	if not children_setup:
+		color_beliefs()
+		children_setup = true
 
 	update_visual()
 
@@ -39,6 +47,17 @@ func update_visual() -> void:
 		
 		var child = get_child(belief)
 		child.position = Vector2.from_angle(angle + width / 2) * offset
-		child.material.set_shader_parameter("color", NPC.colors[belief])
 		child.scale = Vector2(val*max_size, val*max_size)
+		
 		angle += width
+
+func color_beliefs() -> void:
+	for belief in NPC.Belief.values():
+		var child = get_child(belief)
+		var core = child.get_node("./Core").material
+		core.set_shader_parameter("color", NPC.colors[belief])
+		core.set_shader_parameter("padding", border_thickness)
+		var outline = child.get_node("./Outline").material
+		outline.set_shader_parameter("color", border_darkness * NPC.colors[belief])
+		outline.set_shader_parameter("padding", 0)
+		
