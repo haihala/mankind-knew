@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ddly54cbm84af"]
+[gd_scene load_steps=13 format=3 uid="uid://ddly54cbm84af"]
 
 [ext_resource type="Script" path="res://projectile.gd" id="1_31r7s"]
 [ext_resource type="Texture2D" uid="uid://bemfl3puau470" path="res://speech-bubble-red.png" id="2_q5lf2"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://dcsshv4fuo7na" path="res://bubble-02.ogg" id="8_bqjdg"]
 [ext_resource type="AudioStream" uid="uid://dblmpe3sih1k3" path="res://bubble-03.ogg" id="9_r20ka"]
 [ext_resource type="AudioStream" uid="uid://dvcjwrkkhcvev" path="res://bubble-04.ogg" id="10_e2g1u"]
+[ext_resource type="PackedScene" uid="uid://d14kvscht8r3p" path="res://sparkle.tscn" id="11_s8a6b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ed0ho"]
 radius = 9.0
@@ -20,12 +21,13 @@ collision_mask = 3
 script = ExtResource("1_31r7s")
 sprites = Array[Texture2D]([ExtResource("2_q5lf2"), ExtResource("3_moa22"), ExtResource("4_gmjl6"), ExtResource("5_6d7un"), ExtResource("6_88bo6")])
 sounds = Array[AudioStream]([ExtResource("7_yguma"), ExtResource("8_bqjdg"), ExtResource("9_r20ka"), ExtResource("10_e2g1u")])
+sparkle_scene = ExtResource("11_s8a6b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ed0ho")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-z_index = 20
+z_index = 4095
 position = Vector2(0, 1.5)
 scale = Vector2(0.08, 0.08)
 texture = ExtResource("4_gmjl6")

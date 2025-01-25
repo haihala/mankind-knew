@@ -14,7 +14,7 @@ func _physics_process(_delta: float) -> void:
 
 	$CanvasLayer/ColorRect.scale.x = 1-($ReleaseTimer.time_left / release_interval)
 
-	z_index = position.y * 10
+	z_index = int(position.y * 10)
 	move_and_slide()
 
 func release() -> void:

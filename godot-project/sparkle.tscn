@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://d14kvscht8r3p"]
+
+[ext_resource type="Shader" path="res://moving_sphere.gdshader" id="2_0fjta"]
+[ext_resource type="Script" path="res://sparkle.gd" id="2_effhq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cccub"]
+shader = ExtResource("2_0fjta")
+shader_parameter/color = null
+shader_parameter/phase = 1.0
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_bsvwm"]
+
+[node name="Sparkle" type="Sprite2D"]
+z_index = 4096
+material = SubResource("ShaderMaterial_cccub")
+scale = Vector2(30, 30)
+texture = SubResource("CanvasTexture_bsvwm")
+script = ExtResource("2_effhq")
+
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="DespawnTimer" to="." method="queue_free"]

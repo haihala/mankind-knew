@@ -6,12 +6,12 @@ static var size = 0.2
 @export var speed: float = 50
 @export var sprites: Array[Texture2D] = []
 @export var sounds: Array[AudioStream] = []
+@export var sparkle_scene: PackedScene
 var belief: NPC.Belief
 var creator: Node
 var touched: Array[Node] = []
 
 # Ammu ajatuskuplan kasvu yli
-# Sparkle kun osuu
 
 func _ready() -> void:
 	$Sprite.texture = sprites[belief]
@@ -35,3 +35,7 @@ func collision(body: Node2D) -> void:
 	if body.has_method("influence"):
 		body.influence(belief)
 		touched.push_back(body)
+		
+		var sparkle = sparkle_scene.instantiate()
+		sparkle.position = position
+		get_parent().add_child(sparkle)

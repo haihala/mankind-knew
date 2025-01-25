@@ -25,7 +25,7 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	act_on_decisions()
-	z_index = position.y * 10
+	z_index = int(position.y * 10)
 
 func update_decisions() -> void:
 	prev_direction = next_direction
