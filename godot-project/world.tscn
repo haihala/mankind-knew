@@ -10,49 +10,58 @@
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -10
-position = Vector2(578.5, 329.5)
 scale = Vector2(1153, 653)
 texture = SubResource("CanvasTexture_qkyk7")
 
 [node name="WallLeft" parent="." instance=ExtResource("2_wy0le")]
-position = Vector2(0, 324)
+position = Vector2(-576, 0)
 scale = Vector2(1, 6.813)
+collision_layer = 1
+collision_mask = 0
 
 [node name="WallRight" parent="." instance=ExtResource("2_wy0le")]
-position = Vector2(1152, 324)
+position = Vector2(576, 0)
 scale = Vector2(1, 6.813)
+collision_layer = 1
+collision_mask = 0
 
 [node name="WallBottom" parent="." instance=ExtResource("2_wy0le")]
-position = Vector2(576, 648)
+position = Vector2(0, 324)
 scale = Vector2(7.875, 1)
+collision_layer = 1
+collision_mask = 0
 
 [node name="WallTop" parent="." instance=ExtResource("2_wy0le")]
-position = Vector2(556, 0)
+position = Vector2(0, -324)
 scale = Vector2(7.875, 1)
+collision_layer = 1
+collision_mask = 0
 
 [node name="Player" parent="." instance=ExtResource("1_uc7q8")]
-position = Vector2(482, 256)
+position = Vector2(-166, -44)
 
 [node name="NPC" parent="." instance=ExtResource("3_p6jtc")]
-position = Vector2(730, 314)
+position = Vector2(82, 14)
 
 [node name="NPC2" parent="." instance=ExtResource("3_p6jtc")]
-position = Vector2(678, 380)
+position = Vector2(30, 80)
 
 [node name="NPC3" parent="." instance=ExtResource("3_p6jtc")]
-position = Vector2(683, 295)
+position = Vector2(35, -5)
 
 [node name="NPC4" parent="." instance=ExtResource("3_p6jtc")]
-position = Vector2(794, 362)
+position = Vector2(146, 62)
 
 [node name="NPC5" parent="." instance=ExtResource("3_p6jtc")]
-position = Vector2(760, 251)
+position = Vector2(112, -49)
 
 [node name="NPC6" parent="." instance=ExtResource("3_p6jtc")]
-position = Vector2(625, 341)
+position = Vector2(-23, 41)
 
 [node name="NPC7" parent="." instance=ExtResource("3_p6jtc")]
-position = Vector2(640, 261)
+position = Vector2(-8, -39)
 
 [node name="NPC8" parent="." instance=ExtResource("3_p6jtc")]
-position = Vector2(517, 323)
+position = Vector2(-131, 23)
+
+[node name="Camera2D" type="Camera2D" parent="."]

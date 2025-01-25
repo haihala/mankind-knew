@@ -10,20 +10,22 @@ var prev_direction: Vector2
 var beliefs: Dictionary = {}
 var total_belief: float = 0
 
-func _ready():
-	add_belief(Belief.values().pick_random(), 0.2)
+func _ready() -> void:
+	add_belief(Belief.values().pick_random(), Projectile.size)
 	update_decisions()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	act_on_decisions()
 
-func update_decisions():
+func update_decisions() -> void:
 	prev_direction = next_direction
-	next_direction = Vector2.from_angle(randf()*PI*2)
+	var random_direction = Vector2.from_angle(randf()*PI*2)
+	var middle_pull = (-position).normalized() * 0.1
+	next_direction = (random_direction + middle_pull).normalized()
 
-func shoot():
+func shoot(angle: float = randf()*PI*2) -> void:
 	var projectile = projectile_scene.instantiate()
-	projectile.rotation = randf()*PI*2
+	projectile.rotation = angle
 	projectile.creator = self
 	projectile.position = position
 
@@ -38,13 +40,13 @@ func shoot():
 
 	get_parent().add_child(projectile)
 
-func act_on_decisions():
+func act_on_decisions() -> void:
 	var phase = $DecisionTimer.time_left / $DecisionTimer.wait_time
 	var direction = phase * prev_direction + (1-phase) * next_direction
 	velocity = direction * speed
 	move_and_slide()
 
-func add_belief(belief: Belief, amount: float):
+func add_belief(belief: Belief, amount: float) -> void:
 	var current = beliefs.get_or_add(belief, 0)
 	beliefs[belief] = current + amount
 	
@@ -62,6 +64,9 @@ func add_belief(belief: Belief, amount: float):
 
 	$ShotTimer.wait_time = 0.5 / total_belief
 
-func influence(belief: Belief):
-	add_belief(belief, 0.2)
-	print_debug(beliefs)
+func influence(belief: Belief) -> void:
+	add_belief(belief, Projectile.size)
+
+func shoot_towards(target: Node2D) -> void:
+	shoot(position.angle_to(target.position))
+	
