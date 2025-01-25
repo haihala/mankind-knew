@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var speed: float = 50
+var belief: NPC.Belief
 var creator: Node
 
 func _physics_process(delta: float) -> void:
@@ -12,5 +13,5 @@ func collision(body: Node2D):
 		return
 
 	if body.has_method("influence"):
-		body.influence()
+		body.influence(belief)
 	queue_free()

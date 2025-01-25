@@ -34,4 +34,25 @@ scale = Vector2(7.875, 1)
 position = Vector2(482, 256)
 
 [node name="NPC" parent="." instance=ExtResource("3_p6jtc")]
-position = Vector2(691, 330)
+position = Vector2(730, 314)
+
+[node name="NPC2" parent="." instance=ExtResource("3_p6jtc")]
+position = Vector2(678, 380)
+
+[node name="NPC3" parent="." instance=ExtResource("3_p6jtc")]
+position = Vector2(683, 295)
+
+[node name="NPC4" parent="." instance=ExtResource("3_p6jtc")]
+position = Vector2(794, 362)
+
+[node name="NPC5" parent="." instance=ExtResource("3_p6jtc")]
+position = Vector2(760, 251)
+
+[node name="NPC6" parent="." instance=ExtResource("3_p6jtc")]
+position = Vector2(625, 341)
+
+[node name="NPC7" parent="." instance=ExtResource("3_p6jtc")]
+position = Vector2(640, 261)
+
+[node name="NPC8" parent="." instance=ExtResource("3_p6jtc")]
+position = Vector2(517, 323)
