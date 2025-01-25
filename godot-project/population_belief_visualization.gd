@@ -1,13 +1,8 @@
 extends ColorRect
 
-var colors = [Color.RED, Color.GREEN, Color.BLUE, Color.PURPLE, Color.TEAL]
-var last_drawn = 0
 
 @onready var stats = get_tree().get_first_node_in_group("stats")
 @onready var spawner = get_tree().get_first_node_in_group("spawner")
-
-func _ready() -> void:
-	assert(colors.size() == NPC.Belief.values().size())
 
 func _draw() -> void:
 	var bar_width = size.x/stats.state_log.size()
@@ -23,10 +18,5 @@ func _draw() -> void:
 				bar_width,
 				height
 			)
-			draw_rect(rect, colors[belief])
+			draw_rect(rect, NPC.colors[belief])
 			bottom -= height
-
-func _process(_delta: float) -> void:
-	if last_drawn != stats.state_log.size():
-		last_drawn = stats.state_log.size()
-		queue_redraw()

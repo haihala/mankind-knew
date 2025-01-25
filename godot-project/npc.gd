@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name NPC
 
 enum Belief {RED, GREEN, BLUE, PURPLE, TEAL}
+static var colors = [Color.RED, Color.GREEN, Color.BLUE, Color.PURPLE, Color.TEAL]
 
 @export var projectile_scene: PackedScene
 @export var speed: float = 50
@@ -12,6 +13,10 @@ var beliefs: Dictionary = {}
 var total_belief: float = 0
 
 func _ready() -> void:
+	assert(colors.size() == Belief.values().size())
+
+	for belief in Belief.values():
+		beliefs[belief] = 0
 	add_belief(Belief.values().pick_random(), Projectile.size)
 	update_decisions()
 
