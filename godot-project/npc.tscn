@@ -83,6 +83,8 @@ height = 36.5
 [node name="NPC" type="CharacterBody2D" groups=["npc"]]
 collision_layer = 6
 script = ExtResource("1_f8a8o")
+colors = Array[Color]([Color(1, 0.207843, 0.207843, 1), Color(0, 0.827451, 0.278431, 1), Color(0, 0.666667, 1, 1), Color(0.690196, 0.113725, 0.854902, 1), Color(1, 0.788235, 0, 1)])
+border_colors = Array[Color]([Color(0.705882, 0, 0, 1), Color(0.0980392, 0.592157, 0.45098, 1), Color(0, 0.356863, 0.843137, 1), Color(0.427451, 0.00784314, 0.611765, 1), Color(0.898039, 0.435294, 0, 1)])
 projectile_scene = ExtResource("2_rifn1")
 
 [node name="Body" type="AnimatedSprite2D" parent="."]
