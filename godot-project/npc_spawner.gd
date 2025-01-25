@@ -14,4 +14,5 @@ func _ready() -> void:
 		var npc = npc_scene.instantiate()
 		npc.position.x = randf_range(min_x, max_x)
 		npc.position.y = randf_range(min_y, max_y)
+		npc.initial_belief = i % NPC.Belief.values().size()
 		get_parent().add_child.call_deferred(npc)

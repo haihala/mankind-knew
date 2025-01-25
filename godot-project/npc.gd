@@ -13,6 +13,7 @@ var next_direction: Vector2
 var prev_direction: Vector2
 var beliefs: Dictionary = {}
 var total_belief: float = 0
+var initial_belief: Belief
 
 func _ready() -> void:
 	assert(colors.size() == Belief.values().size())
@@ -20,7 +21,7 @@ func _ready() -> void:
 
 	for belief in Belief.values():
 		beliefs[belief] = 0
-	add_belief(Belief.values().pick_random(), Projectile.size)
+	add_belief(initial_belief, Projectile.size)
 	update_decisions()
 
 func _physics_process(_delta: float) -> void:

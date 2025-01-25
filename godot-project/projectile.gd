@@ -29,8 +29,8 @@ func _physics_process(delta: float) -> void:
 	
 	# Scale self on hit
 	var scale_phase = $SizeAdjustmentTimer.time_left / $SizeAdjustmentTimer.wait_time
-	var ease = 1-pow(2*scale_phase-1, 2)
-	var scaler = 1 + ease * on_hit_grow
+	var easing = 1-pow(2*scale_phase-1, 2)
+	var scaler = 1 + easing * on_hit_grow
 	scale = Vector2(scaler, scaler)
 
 func collision(body: Node2D) -> void:
