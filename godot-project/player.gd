@@ -10,12 +10,8 @@ var beliefs: Dictionary = {}
 var total_belief: float = 0
 var state: State = State.EMPTY
 
-var NPCs: Array[Node]
 
 func _physics_process(_delta: float) -> void:
-	if NPCs.is_empty():
-		NPCs = get_parent().get_tree().get_nodes_in_group("npc")
-
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
 	velocity = direction * speed / max(1, total_belief)
 
@@ -52,7 +48,7 @@ func extract() -> void:
 
 	# Pick a nearby NPC from cached NPC list
 	var nearby = []
-	for npc in NPCs:
+	for npc in get_tree().get_nodes_in_group("npc"):
 		if (position - npc.position).length() < extract_distance:
 			nearby.push_back(npc)
 

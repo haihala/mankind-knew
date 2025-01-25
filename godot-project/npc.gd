@@ -5,6 +5,7 @@ enum Belief {RED, GREEN, BLUE, PURPLE, TEAL}
 
 @export var projectile_scene: PackedScene
 @export var speed: float = 50
+@export var max_direction_influence_per_npc: float = 0.2
 var next_direction: Vector2
 var prev_direction: Vector2
 var beliefs: Dictionary = {}
@@ -21,7 +22,25 @@ func update_decisions() -> void:
 	prev_direction = next_direction
 	var random_direction = Vector2.from_angle(randf()*PI*2)
 	var middle_pull = (-position).normalized() * 0.1
-	next_direction = (random_direction + middle_pull).normalized()
+	var npc_influence = Vector2.ZERO
+
+	for npc in get_tree().get_nodes_in_group("npc"):
+		if npc == self:
+			continue
+		
+		var similarity = calculate_similarity(npc)
+		var direction = (npc.position - position).normalized()
+		npc_influence += max_direction_influence_per_npc * direction * similarity
+	next_direction = (random_direction + middle_pull + npc_influence).normalized()
+
+# From 0 to 1
+func calculate_similarity(npc: NPC) -> float:
+	var similarity = 0
+	
+	for belief in Belief.values():
+		similarity += beliefs.get(belief, 0) * npc.beliefs.get(belief, 0)
+
+	return similarity
 
 func shoot(angle: float = randf()*PI*2) -> void:
 	var projectile = projectile_scene.instantiate()
