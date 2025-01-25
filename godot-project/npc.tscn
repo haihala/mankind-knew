@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ddly54cbm84af" path="res://projectile.tscn" id="2_rifn1"]
 [ext_resource type="Script" path="res://npc_belief_visualizer.gd" id="4_ggpmd"]
 [ext_resource type="Texture2D" uid="uid://dlfvckp1xub78" path="res://walk-1.png" id="5_1qpc0"]
-[ext_resource type="Shader" path="res://npc_belief_visualization.gdshader" id="5_2lq31"]
+[ext_resource type="Shader" path="res://sphere.gdshader" id="5_2lq31"]
 [ext_resource type="Texture2D" uid="uid://biw2pe7mtptdj" path="res://walk-2.png" id="6_3r1ct"]
 [ext_resource type="Texture2D" uid="uid://ba3wxfij1bv6p" path="res://head-back.png" id="7_n08ip"]
 [ext_resource type="Texture2D" uid="uid://cywgpxoqroo1y" path="res://head-front.png" id="8_y7txn"]
