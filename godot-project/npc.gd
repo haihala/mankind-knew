@@ -4,15 +4,20 @@ class_name NPC
 enum Belief {RED, GREEN, BLUE, PURPLE, ORANGE}
 @export var colors: Array[Color] = [Color.RED, Color.GREEN, Color.BLUE, Color.PURPLE, Color.ORANGE]
 @export var border_colors: Array[Color] = [Color.RED, Color.GREEN, Color.BLUE, Color.PURPLE, Color.ORANGE]
-
 @export var projectile_scene: PackedScene
 @export var speed: float = 30
 @export var eyes_offset: float = 7
-@export var max_direction_influence_per_npc: float = 0.2
+@export var npc_influence_multiplier: float = 0.2
+@export var similarity_multiplier = 2
+@export var repulsion_multiplier = 4
+@export_range(0, 1) var strong_belief_threshold = 0.7
+
+var leftover = 2 - 2*strong_belief_threshold
 var next_direction: Vector2
 var prev_direction: Vector2
 var beliefs: Dictionary = {}
 var total_belief: float = 0
+var strongest_belief: Belief
 var initial_belief: Belief
 
 func _ready() -> void:
@@ -38,9 +43,13 @@ func update_decisions() -> void:
 		if npc == self:
 			continue
 		
+		var diff = position - npc.position
+		var direction = diff.normalized()
+		var inverse_distance = 1/diff.length()
+		
 		var similarity = calculate_similarity(npc)
-		var direction = (npc.position - position).normalized()
-		npc_influence += max_direction_influence_per_npc * direction * similarity
+		var repulsion = calculate_polarization_repulsion(npc)
+		npc_influence += npc_influence_multiplier * direction * inverse_distance * (similarity - repulsion)
 	next_direction = (random_direction + middle_pull + npc_influence).normalized()
 
 # From 0 to 1
@@ -50,7 +59,18 @@ func calculate_similarity(npc: NPC) -> float:
 	for belief in Belief.values():
 		similarity += beliefs.get(belief, 0) * npc.beliefs.get(belief, 0)
 
-	return similarity
+	return similarity_multiplier * similarity
+
+# From 0 to 1
+func calculate_polarization_repulsion(npc: NPC) -> float:
+	# Same strongest beliefs -> no repulsion
+	if npc.strongest_belief == strongest_belief:
+		return 0
+
+	var strongest = beliefs[strongest_belief]
+	var npc_strongest = npc.beliefs[npc.strongest_belief]
+	var total_strength = strongest + npc_strongest
+	return repulsion_multiplier * max((total_strength - 2*strong_belief_threshold) / leftover, 0)
 
 func shoot(angle: float = randf()*PI*2) -> void:
 	var projectile = projectile_scene.instantiate()
@@ -81,8 +101,13 @@ func add_belief(belief: Belief, amount: float) -> void:
 	beliefs[belief] = current + amount
 	
 	var total = 0
+	var strongest_belief_amount = 0
 	for key in beliefs:
-		total += beliefs[key]
+		var value = beliefs[key]
+		total += value
+		if value > strongest_belief_amount:
+			strongest_belief = key
+			strongest_belief_amount = value
 	
 	# Evenly shrink every belief so that we get under the total
 	if total > 1:

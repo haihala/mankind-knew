@@ -42,7 +42,6 @@ collision_layer = 1
 collision_mask = 0
 
 [node name="Player" parent="." instance=ExtResource("1_uc7q8")]
-position = Vector2(-166, -44)
 
 [node name="NPCSpawner" parent="." instance=ExtResource("3_23yi1")]
 scale = Vector2(45, 20)
