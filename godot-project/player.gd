@@ -27,10 +27,6 @@ func _ready() -> void:
 	$HatShaftFill.scale.y = max_hat_height
 	$HatShaftFill.position = hat_offset - Vector2(0, max_hat_height/2 - 1.1)
 	$Body.play("default")
-	
-	# Web shaders are broken, use colors
-	if OS.has_feature("web"):
-		$HatShaftFill.material.set_shader_parameter("use_colors", true)
 
 func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()

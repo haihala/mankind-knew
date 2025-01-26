@@ -35,7 +35,7 @@ animations = [{
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ko1ec"]
 shader = ExtResource("4_wc2p6")
-shader_parameter/use_colors = null
+shader_parameter/use_colors = false
 shader_parameter/pattern_scales = PackedFloat32Array(3, 0.5, 1, 1.5, 0.4)
 shader_parameter/beliefs = PackedFloat32Array(0.287, 0.104, 0.181, 0.165, 0.113)
 shader_parameter/hat_height = 3.0

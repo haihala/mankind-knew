@@ -1,7 +1,7 @@
 shader_type canvas_item;
 
 uniform bool use_colors;
-uniform sampler2D[5] patterns : source_color;
+uniform sampler2D[5] patterns;
 uniform float[5] pattern_scales;
 uniform float[5] beliefs;
 uniform float hat_height;
@@ -19,6 +19,14 @@ const vec4 colors[5] = {
 void fragment() {
 	vec2 coords = vec2(1.0-2.0*UV.x, 1.0-UV.y);
 
+	vec4 sampled [5] = {
+		texture(patterns[0], fract(UV*pattern_scales[0] * vec2(1.0, hat_height))),
+		texture(patterns[1], fract(UV*pattern_scales[1] * vec2(1.0, hat_height))),
+		texture(patterns[2], fract(UV*pattern_scales[2] * vec2(1.0, hat_height))),
+		texture(patterns[3], fract(UV*pattern_scales[3] * vec2(1.0, hat_height))),
+		texture(patterns[4], fract(UV*pattern_scales[4] * vec2(1.0, hat_height)))
+	};
+
 	float thickness = pow(abs(coords.x), 2.0) * roundness_squishing;
 	float inverse_thickness = roundness_squishing - thickness;
 	float bottom = thickness;
@@ -30,13 +38,7 @@ void fragment() {
 		}
 		float top = bottom + beliefs[i] + (2.0 * inverse_thickness);
 		if (coords.y > bottom && coords.y < top) {
-			vec2 pos = UV*pattern_scales[i] * vec2(1.0, hat_height);
-			if (use_colors) {
-				COLOR = colors[i];
-			} else {
-				// If this line is uncommented, no matter if it gets exectued or not, the game won't run on mobile
-				//COLOR = texture(patterns[i], fract(pos));
-			}
+			COLOR = sampled[i];
 		}
 		bottom += beliefs[i];
 	}
