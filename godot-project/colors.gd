@@ -22,8 +22,8 @@ static var patterns: Array[Texture2D] = [
 	load("res://pattern-square-purple.png"), 
 	load("res://pattern-square-yellow.png")
 ]
-# Used in the thought bubbles and the player's hat
-static var pattern_scales: Array[float] = [
+# Used in the thought bubbles
+static var pattern_bubble_scales: Array[float] = [
 	3,
 	0.5,
 	1,
@@ -31,6 +31,14 @@ static var pattern_scales: Array[float] = [
 	0.4,
 ]
 
+# Used in the player's hat
+static var pattern_hat_scales: Array[float] = [
+	3,
+	0.5,
+	1,
+	1.5,
+	0.4,
+]
 # Used in the end screen charts
 static var pattern_ui_scales: Array[float] = [
 	1,

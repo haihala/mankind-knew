@@ -27,7 +27,7 @@ func _ready() -> void:
 	$HatShaftFill.scale.y = max_hat_height
 	$HatShaftFill.position = hat_offset - Vector2(0, max_hat_height/2)
 	$HatShaftFill.material.set_shader_parameter("patterns", Colors.patterns)
-	$HatShaftFill.material.set_shader_parameter("pattern_scales", Colors.pattern_scales)
+	$HatShaftFill.material.set_shader_parameter("pattern_scales", Colors.pattern_hat_scales)
 	$Body.play("default")
 
 func _physics_process(delta: float) -> void:
@@ -46,9 +46,11 @@ func _physics_process(delta: float) -> void:
 	if total_belief > hat_height:
 		releasing = true
 
+	move_and_slide()
+
+func _process(delta: float) -> void:
 	visualize_hat()
 	move_eyes()
-	move_and_slide()
 
 func visualize_hat() -> void:
 	var hh = max_hat_height*hat_height
