@@ -18,25 +18,25 @@ scale = Vector2(1153, 653)
 texture = SubResource("CanvasTexture_qkyk7")
 
 [node name="WallLeft" parent="." instance=ExtResource("2_wy0le")]
-position = Vector2(-576, 0)
+position = Vector2(-676, 0)
 scale = Vector2(1, 6.813)
 collision_layer = 1
 collision_mask = 0
 
 [node name="WallRight" parent="." instance=ExtResource("2_wy0le")]
-position = Vector2(576, 0)
+position = Vector2(676, 0)
 scale = Vector2(1, 6.813)
 collision_layer = 1
 collision_mask = 0
 
 [node name="WallBottom" parent="." instance=ExtResource("2_wy0le")]
-position = Vector2(0, 324)
+position = Vector2(0, 424)
 scale = Vector2(7.875, 1)
 collision_layer = 1
 collision_mask = 0
 
 [node name="WallTop" parent="." instance=ExtResource("2_wy0le")]
-position = Vector2(0, -324)
+position = Vector2(0, -344)
 scale = Vector2(7.875, 1)
 collision_layer = 1
 collision_mask = 0
@@ -44,7 +44,8 @@ collision_mask = 0
 [node name="Player" parent="." instance=ExtResource("1_uc7q8")]
 
 [node name="NPCSpawner" parent="." instance=ExtResource("3_23yi1")]
-scale = Vector2(45, 20)
+position = Vector2(0, 50)
+scale = Vector2(55, 25)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
