@@ -2,6 +2,7 @@ shader_type canvas_item;
 
 uniform sampler2D[5] patterns;
 uniform float[5] pattern_scales;
+uniform float[5] pattern_angles;
 uniform float[5] beliefs;
 uniform float hat_height;
 

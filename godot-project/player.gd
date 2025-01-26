@@ -28,6 +28,7 @@ func _ready() -> void:
 	$HatShaftFill.position = hat_offset - Vector2(0, max_hat_height/2)
 	$HatShaftFill.material.set_shader_parameter("patterns", Colors.patterns)
 	$HatShaftFill.material.set_shader_parameter("pattern_scales", Colors.pattern_hat_scales)
+	$HatShaftFill.material.set_shader_parameter("pattern_angles", Colors.pattern_hat_angles)
 	$Body.play("default")
 
 func _physics_process(delta: float) -> void:
@@ -42,8 +43,9 @@ func _physics_process(delta: float) -> void:
 
 	z_index = int(position.y * 10)
 	
-	hat_height -= delta * hat_fall_speed
-	if total_belief > hat_height:
+	hat_height = clamp(hat_height - delta * hat_fall_speed, total_belief, 1)
+	
+	if total_belief == hat_height:
 		releasing = true
 
 	move_and_slide()
@@ -57,7 +59,7 @@ func visualize_hat() -> void:
 	$HatShaft.position = hat_offset - Vector2(0, hh/2)
 	$HatShaft.scale.y = hh
 	$Hat.position = hat_offset - Vector2(0, hh)
-	$HatShaftFill.material.set_shader_parameter("hat_height", max(1, total_belief) * hh / 8)
+	$HatShaftFill.material.set_shader_parameter("hat_height", max(1, total_belief) * max_hat_height / 8)
 
 	var vis_beliefs = []
 	for belief in NPC.Belief.values():
@@ -97,11 +99,10 @@ func shoot() -> void:
 			else:
 				total_belief -= shot_cost
 				beliefs[belief] -= shot_cost
-			hat_height = min(total_belief, 1)
+			get_parent().add_child(projectile)
 			break
 		rand_belief -= amount
 
-	get_parent().add_child(projectile)
 
 func influence(belief: NPC.Belief, amount: float = 0.2/hat_capacity) -> void:
 	beliefs[belief] = beliefs.get(belief, 0) + amount

@@ -39,6 +39,15 @@ static var pattern_hat_scales: Array[float] = [
 	1.5,
 	0.4,
 ]
+
+static var pattern_hat_angles: Array[float] = [
+	PI/3,
+	0,
+	0,
+	-PI/3,
+	0,
+]
+
 # Used in the end screen charts
 static var pattern_ui_scales: Array[float] = [
 	1,
