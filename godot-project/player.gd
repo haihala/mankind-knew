@@ -43,7 +43,10 @@ func _physics_process(delta: float) -> void:
 
 	z_index = int(position.y * 10)
 	
-	hat_height = clamp(hat_height - delta * hat_fall_speed, total_belief, 1)
+	if releasing:
+		hat_height = min(1, total_belief)
+	else:
+		hat_height = clamp(hat_height - delta * hat_fall_speed, total_belief, 1)
 	
 	if total_belief == hat_height:
 		releasing = true
