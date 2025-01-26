@@ -50,7 +50,7 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	visualize_hat()
 	move_eyes()
 

@@ -17,6 +17,9 @@ func _draw() -> void:
 		var state = stats.state_log[time]
 		for belief in NPC.Belief.values():
 			var height = height_scaler * state[belief]
+			if abs(height)<1:
+				continue
+
 			var top = bottom - height
 			bottoms[belief].push_front([x, bottom])
 			tops[belief].push_back([x, top])
