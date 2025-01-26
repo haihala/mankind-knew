@@ -12,6 +12,7 @@ var belief: NPC.Belief
 var creator: Node
 var touched: Array[Node] = []
 var extra_velocity: Vector2 = Vector2.ZERO
+var volume_increase: float = 0
 
 func _ready() -> void:
 	$Sprite.texture = sprites[belief]
@@ -19,6 +20,7 @@ func _ready() -> void:
 	
 	var stats = get_tree().get_first_node_in_group("stats")
 	if not stats.done:
+		$SpawnSound.volume_db += volume_increase
 		$SpawnSound.stream = sounds.pick_random()
 		$SpawnSound.play()
 
