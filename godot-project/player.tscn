@@ -83,3 +83,9 @@ texture = ExtResource("8_fusqb")
 position = Vector2(22, 9)
 scale = Vector2(0.08, 0.08)
 texture = ExtResource("7_pls7t")
+
+[node name="ReleaseTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="ReleaseTimer" to="." method="release"]

@@ -18,6 +18,7 @@ var last_direction: Vector2 = Vector2(1, 0)
 
 var hat_offset: Vector2
 var hat_height = 1
+var releasing = false
 
 func _ready() -> void:
 	hat_offset = $HatShaft.position
@@ -40,7 +41,7 @@ func _physics_process(delta: float) -> void:
 	
 	hat_height -= delta * hat_fall_speed
 	if total_belief > hat_height:
-		release()
+		releasing = true
 
 	visualize_hat()
 	move_eyes()
@@ -62,32 +63,42 @@ func move_eyes() -> void:
 
 
 func release() -> void:
-	while not beliefs.is_empty():
-		var projectile = projectile_scene.instantiate()
-		projectile.rotation = randf()*spread - spread/2 + last_direction.angle()
-		projectile.creator = self
-		projectile.position = position
-		projectile.extra_velocity = velocity
+	if not releasing:
+		return
+		
+	if beliefs.is_empty():
+		hat_height = 1
+		releasing = false
+	else:
+		shoot()
 
-		# Get a random belief
-		var rand_belief = randf() * total_belief
-		for belief in beliefs:
-			var amount = beliefs[belief]
-			if rand_belief < amount:
-				projectile.belief = belief
-				projectile.speed *= projectile_speed_multiplier
-				
-				if amount <= Projectile.size:
-					total_belief -= beliefs[belief]
-					beliefs.erase(belief)
-				else:
-					beliefs[belief] -= Projectile.size
-					total_belief -= Projectile.size
-				break
-			rand_belief -= amount
+func shoot() -> void:
+	var projectile = projectile_scene.instantiate()
+	projectile.rotation = randf()*spread - spread/2 + last_direction.angle()
+	projectile.creator = self
+	projectile.position = position
+	projectile.extra_velocity = velocity
 
-		get_parent().add_child(projectile)
-	hat_height = 1
+	# Get a random belief
+	var rand_belief = randf() * total_belief
+	for belief in beliefs:
+		var amount = beliefs[belief]
+		if rand_belief < amount:
+			projectile.belief = belief
+			projectile.speed *= projectile_speed_multiplier
+			
+			if amount <= Projectile.size:
+				total_belief -= beliefs[belief]
+				beliefs.erase(belief)
+			else:
+				beliefs[belief] -= Projectile.size
+				total_belief -= Projectile.size
+			hat_height = total_belief
+			break
+		rand_belief -= amount
+
+	get_parent().add_child(projectile)
+
 func influence(belief: NPC.Belief, amount: float = 0.2/hat_capacity) -> void:
 	beliefs[belief] = beliefs.get(belief, 0) + amount
 	total_belief += amount
