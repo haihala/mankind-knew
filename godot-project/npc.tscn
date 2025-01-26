@@ -192,20 +192,17 @@ one_shot = true
 autostart = true
 
 [node name="Head-front" type="Sprite2D" parent="."]
-visible = false
 self_modulate = Color(1, 1, 1, 0.501961)
 z_index = 10
 scale = Vector2(0.08, 0.08)
 texture = ExtResource("8_y7txn")
 
 [node name="Head-outline" type="Sprite2D" parent="."]
-visible = false
 z_index = 10
 scale = Vector2(0.08, 0.08)
 texture = ExtResource("9_occuo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, 2.75)
 shape = SubResource("CapsuleShape2D_2teft")
 
