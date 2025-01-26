@@ -1,7 +1,7 @@
 extends Node
 
 static var colors: Array[Color] = [
-	Color('FF3535'), 
+	Color('FF3535'),
 	Color('00D347'), 
 	Color('00AAFF'), 
 	Color('B01DDA'), 
@@ -15,12 +15,12 @@ static var border_colors: Array[Color] = [
 	Color('E56F00')
 ]
 
-static var patterns: Array[Texture2D] = [
-	load("res://pattern-square-red.png"), 
-	load("res://pattern-square-green.png"), 
-	load("res://pattern-square-blue.png"), 
-	load("res://pattern-square-purple.png"), 
-	load("res://pattern-square-yellow.png")
+static var patterns: Array[String] = [
+	"res://pattern-square-red.png", 
+	"res://pattern-square-green.png", 
+	"res://pattern-square-blue.png", 
+	"res://pattern-square-purple.png", 
+	"res://pattern-square-yellow.png"
 ]
 # Used in the thought bubbles
 static var pattern_bubble_scales: Array[float] = [

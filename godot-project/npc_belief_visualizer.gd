@@ -55,7 +55,7 @@ func color_beliefs() -> void:
 		var child = get_child(belief)
 		var core = child.get_node("./Core").material
 		core.set_shader_parameter("color", Color.WHITE)
-		core.set_shader_parameter("pattern", Colors.patterns[belief])
+		core.set_shader_parameter("pattern", load(Colors.patterns[belief]))
 		core.set_shader_parameter("pattern_scale", Colors.pattern_bubble_scales[belief])
 		core.set_shader_parameter("padding", border_thickness)
 		var outline = child.get_node("./Outline").material

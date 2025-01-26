@@ -32,7 +32,7 @@ func _draw() -> void:
 		
 		var child = get_child(belief)
 		child.polygon = float_array_to_Vector2Array(bot)
-		child.texture = Colors.patterns[belief]
+		child.texture = load(Colors.patterns[belief])
 		var tex_scale = Colors.pattern_ui_scales[belief]
 		child.texture_scale = Vector2(tex_scale, tex_scale)
 

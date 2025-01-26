@@ -30,7 +30,7 @@ func _ready() -> void:
 	
 	# Web shaders are broken, use colors
 	if OS.has_feature("web"):
-		$HatShaftFill.material.set_shader_parameter("colors", Colors.colors)
+		$HatShaftFill.material.set_shader_parameter("use_colors", true)
 
 func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
