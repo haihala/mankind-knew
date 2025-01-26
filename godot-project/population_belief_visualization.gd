@@ -29,9 +29,8 @@ func _draw() -> void:
 		
 		var child = get_child(belief)
 		child.polygon = float_array_to_Vector2Array(bot)
-		var npc = NPC.new()
-		child.texture = npc.patterns[belief]
-		var tex_scale = npc.pattern_ui_scales[belief]
+		child.texture = Colors.patterns[belief]
+		var tex_scale = Colors.pattern_ui_scales[belief]
 		child.texture_scale = Vector2(tex_scale, tex_scale)
 
 func float_array_to_Vector2Array(coords : Array) -> PackedVector2Array:

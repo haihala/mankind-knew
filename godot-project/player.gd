@@ -26,9 +26,8 @@ func _ready() -> void:
 	hat_offset = $HatShaft.position
 	$HatShaftFill.scale.y = max_hat_height
 	$HatShaftFill.position = hat_offset - Vector2(0, max_hat_height/2)
-	var npc = NPC.new()
-	$HatShaftFill.material.set_shader_parameter("patterns", npc.patterns)
-	$HatShaftFill.material.set_shader_parameter("pattern_scales", npc.pattern_scales)
+	$HatShaftFill.material.set_shader_parameter("patterns", Colors.patterns)
+	$HatShaftFill.material.set_shader_parameter("pattern_scales", Colors.pattern_scales)
 	$HatShaftFill.material.set_shader_parameter("hat_height", max_hat_height / 8)
 	$Body.play("default")
 

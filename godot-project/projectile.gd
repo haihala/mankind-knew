@@ -54,7 +54,7 @@ func collision(body: Node2D) -> void:
 		
 		var sparkle = sparkle_scene.instantiate()
 		sparkle.position = position
-		sparkle.material.set_shader_parameter("color", NPC.new().border_colors[belief])
+		sparkle.material.set_shader_parameter("color", Colors.border_colors[belief])
 		get_parent().add_child(sparkle)
 		
 		$SizeAdjustmentTimer.start()
