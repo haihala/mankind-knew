@@ -214,7 +214,6 @@ wait_time = 2.0
 autostart = true
 
 [node name="Eyes" type="Sprite2D" parent="."]
-visible = false
 z_index = 15
 scale = Vector2(0.08, 0.08)
 texture = ExtResource("9_b2x7f")
