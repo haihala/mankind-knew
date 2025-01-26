@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://o3k8pn2ko6av"]
 
 [ext_resource type="Script" path="res://end_screen.gd" id="1_shlek"]
-[ext_resource type="Material" uid="uid://064ebc0mva2j" path="res://blur.tres" id="1_xxevj"]
-[ext_resource type="Theme" uid="uid://drfgb57o0sofj" path="res://theme.tres" id="3_i08cu"]
+[ext_resource type="Material" path="res://blur.tres" id="1_xxevj"]
+[ext_resource type="Theme" uid="uid://6ruuxerdpcyq" path="res://theme.tres" id="3_i08cu"]
 [ext_resource type="Script" path="res://population_belief_visualization.gd" id="4_v3ft8"]
 
 [sub_resource type="Animation" id="Animation_rpuup"]
@@ -81,7 +81,8 @@ alignment = 1
 layout_mode = 2
 theme = ExtResource("3_i08cu")
 theme_type_variation = &"HeaderLarge"
-theme_override_constants/outline_size = 5
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 12
 text = "Game over"
 horizontal_alignment = 1
 
