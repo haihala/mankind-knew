@@ -4,6 +4,8 @@ func _ready() -> void:
 	hide()
 	var stats = get_tree().get_first_node_in_group("stats")
 	stats.connect("end_game", open)
+	if OS.has_feature("web"):
+		$VBoxContainer/ButtonContainer/QuitButton.queue_free()
 
 func open() -> void:
 	show()
