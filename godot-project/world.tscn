@@ -37,6 +37,8 @@ collision_layer = 1
 collision_mask = 0
 
 [node name="WallTop" parent="." instance=ExtResource("2_wy0le")]
+z_index = -4096
+z_as_relative = false
 position = Vector2(0, -390)
 scale = Vector2(7.875, 1)
 collision_layer = 1
@@ -45,8 +47,8 @@ collision_mask = 0
 [node name="Player" parent="." instance=ExtResource("1_uc7q8")]
 
 [node name="NPCSpawner" parent="." instance=ExtResource("3_23yi1")]
-position = Vector2(0, 50)
-scale = Vector2(55, 25)
+position = Vector2(0, 20)
+scale = Vector2(55, 29)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
