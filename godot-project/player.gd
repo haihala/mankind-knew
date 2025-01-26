@@ -33,6 +33,10 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		var cam = get_viewport().get_camera_2d()
+		var mouse_pos = cam.get_global_mouse_position()
+		direction = (mouse_pos - position).normalized()
 	velocity = direction * speed / max(1, total_belief)
 
 	if direction.is_zero_approx():
