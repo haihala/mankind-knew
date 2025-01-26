@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ddjdvmj3ommdu"]
+[gd_scene load_steps=27 format=3 uid="uid://ddjdvmj3ommdu"]
 
 [ext_resource type="Script" path="res://npc.gd" id="1_f8a8o"]
 [ext_resource type="PackedScene" uid="uid://ddly54cbm84af" path="res://projectile.tscn" id="2_rifn1"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cywgpxoqroo1y" path="res://head-front.png" id="8_y7txn"]
 [ext_resource type="Texture2D" uid="uid://d4l8cmg46qquc" path="res://eyes.png" id="9_b2x7f"]
 [ext_resource type="Texture2D" uid="uid://c38c532l01bxn" path="res://head-outline.png" id="9_occuo"]
+[ext_resource type="Texture2D" uid="uid://bhjk5wj7alp2t" path="res://pattern-square-blue.png" id="9_y8uo7"]
 [ext_resource type="Texture2D" uid="uid://bjathuci5lsn1" path="res://shadow.png" id="10_ohbyq"]
 
 [sub_resource type="Curve" id="Curve_1fkl3"]
@@ -33,54 +34,65 @@ animations = [{
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a78gt"]
 shader = ExtResource("5_2lq31")
-shader_parameter/color = Color(1, 0, 0, 1)
-shader_parameter/padding = 0.448
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/pattern_scale = 3.002
+shader_parameter/padding = 0.2
+shader_parameter/pattern = ExtResource("9_y8uo7")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_mpo78"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_plwf0"]
 shader = ExtResource("5_2lq31")
-shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/color = null
+shader_parameter/pattern_scale = 1.0
 shader_parameter/padding = 0.496
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ua1df"]
 shader = ExtResource("5_2lq31")
-shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/color = null
+shader_parameter/pattern_scale = 1.0
 shader_parameter/padding = 0.2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kkuth"]
 shader = ExtResource("5_2lq31")
-shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/color = null
+shader_parameter/pattern_scale = 1.0
 shader_parameter/padding = 0.2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v5uvs"]
 shader = ExtResource("5_2lq31")
-shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/color = null
+shader_parameter/pattern_scale = 1.0
 shader_parameter/padding = 0.2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4mr5x"]
 shader = ExtResource("5_2lq31")
-shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/color = null
+shader_parameter/pattern_scale = 1.0
 shader_parameter/padding = 0.2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1jdf0"]
 shader = ExtResource("5_2lq31")
-shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/color = null
+shader_parameter/pattern_scale = 1.0
 shader_parameter/padding = 0.2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mww58"]
 shader = ExtResource("5_2lq31")
-shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/color = null
+shader_parameter/pattern_scale = 1.0
 shader_parameter/padding = 0.2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6aumn"]
 shader = ExtResource("5_2lq31")
-shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/color = null
+shader_parameter/pattern_scale = 1.0
 shader_parameter/padding = 0.2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uxioa"]
 shader = ExtResource("5_2lq31")
-shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/color = null
+shader_parameter/pattern_scale = 1.0
 shader_parameter/padding = 0.2
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2teft"]
@@ -91,8 +103,6 @@ height = 36.5
 scale = Vector2(2, 2)
 collision_layer = 6
 script = ExtResource("1_f8a8o")
-colors = Array[Color]([Color(1, 0.207843, 0.207843, 1), Color(0, 0.827451, 0.278431, 1), Color(0, 0.666667, 1, 1), Color(0.690196, 0.113725, 0.854902, 1), Color(1, 0.788235, 0, 1)])
-border_colors = Array[Color]([Color(0.705882, 0, 0, 1), Color(0.0980392, 0.592157, 0.45098, 1), Color(0, 0.356863, 0.843137, 1), Color(0.427451, 0.00784314, 0.611765, 1), Color(0.898039, 0.435294, 0, 1)])
 projectile_scene = ExtResource("2_rifn1")
 npc_influence_distance_falloff = SubResource("Curve_1fkl3")
 
@@ -121,6 +131,7 @@ max_size = 30.0
 dead_angle = 2.094
 
 [node name="Belief1" type="Node2D" parent="BeliefVisualizer"]
+scale = Vector2(30.541, 30.541)
 
 [node name="Core" type="Sprite2D" parent="BeliefVisualizer/Belief1"]
 material = SubResource("ShaderMaterial_a78gt")
@@ -181,17 +192,20 @@ one_shot = true
 autostart = true
 
 [node name="Head-front" type="Sprite2D" parent="."]
+visible = false
 self_modulate = Color(1, 1, 1, 0.501961)
 z_index = 10
 scale = Vector2(0.08, 0.08)
 texture = ExtResource("8_y7txn")
 
 [node name="Head-outline" type="Sprite2D" parent="."]
+visible = false
 z_index = 10
 scale = Vector2(0.08, 0.08)
 texture = ExtResource("9_occuo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 2.75)
 shape = SubResource("CapsuleShape2D_2teft")
 
@@ -203,6 +217,7 @@ wait_time = 2.0
 autostart = true
 
 [node name="Eyes" type="Sprite2D" parent="."]
+visible = false
 z_index = 15
 scale = Vector2(0.08, 0.08)
 texture = ExtResource("9_b2x7f")

@@ -22,7 +22,7 @@ void fragment() {
 			COLOR = color;
 			break;
 		}
-		
+
 		if (length(centered - ball_pos) < radius) {
 			COLOR.rgba = vec4(1.0);
 			break;

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://o3k8pn2ko6av"]
+[gd_scene load_steps=9 format=3 uid="uid://o3k8pn2ko6av"]
 
 [ext_resource type="Script" path="res://end_screen.gd" id="1_shlek"]
 [ext_resource type="Material" uid="uid://064ebc0mva2j" path="res://blur.tres" id="1_xxevj"]
@@ -40,6 +40,8 @@ _data = {
 "RESET": SubResource("Animation_rpuup"),
 "start_blur": SubResource("Animation_js30q")
 }
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mxo4f"]
 
 [node name="EndScreen" type="Control"]
 z_index = 10
@@ -96,6 +98,31 @@ layout_mode = 2
 theme = ExtResource("3_i08cu")
 color = Color(1, 1, 1, 0)
 script = ExtResource("4_v3ft8")
+
+[node name="Polygon2D1" type="Polygon2D" parent="VBoxContainer/MarginContainer/BeliefVisualization"]
+texture_repeat = 2
+material = SubResource("CanvasItemMaterial_mxo4f")
+texture_scale = Vector2(2.199, 2.199)
+
+[node name="Polygon2D2" type="Polygon2D" parent="VBoxContainer/MarginContainer/BeliefVisualization"]
+texture_repeat = 2
+material = SubResource("CanvasItemMaterial_mxo4f")
+texture_scale = Vector2(2.199, 2.199)
+
+[node name="Polygon2D3" type="Polygon2D" parent="VBoxContainer/MarginContainer/BeliefVisualization"]
+texture_repeat = 2
+material = SubResource("CanvasItemMaterial_mxo4f")
+texture_scale = Vector2(2.199, 2.199)
+
+[node name="Polygon2D4" type="Polygon2D" parent="VBoxContainer/MarginContainer/BeliefVisualization"]
+texture_repeat = 2
+material = SubResource("CanvasItemMaterial_mxo4f")
+texture_scale = Vector2(2.199, 2.199)
+
+[node name="Polygon2D5" type="Polygon2D" parent="VBoxContainer/MarginContainer/BeliefVisualization"]
+texture_repeat = 2
+material = SubResource("CanvasItemMaterial_mxo4f")
+texture_scale = Vector2(2.199, 2.199)
 
 [node name="ButtonContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2

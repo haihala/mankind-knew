@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://be55yifao4fp"]
+[gd_scene load_steps=14 format=3 uid="uid://be55yifao4fp"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_n0b4w"]
 [ext_resource type="PackedScene" uid="uid://ddly54cbm84af" path="res://projectile.tscn" id="2_j4an7"]
@@ -29,8 +29,10 @@ animations = [{
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ko1ec"]
 shader = ExtResource("4_wc2p6")
-shader_parameter/colors = PackedVector4Array(0, 0, 1, 1, 1, 0, 0, 1)
+shader_parameter/pattern_scales = null
 shader_parameter/beliefs = PackedFloat32Array(0.194, 0.556)
+shader_parameter/hat_height = null
+shader_parameter/patterns = null
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_xx132"]
 
