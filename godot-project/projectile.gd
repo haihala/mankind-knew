@@ -11,6 +11,7 @@ static var size = 0.2
 var belief: NPC.Belief
 var creator: Node
 var touched: Array[Node] = []
+var extra_velocity: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	$Sprite.texture = sprites[belief]
@@ -22,7 +23,7 @@ func _ready() -> void:
 		$SpawnSound.play()
 
 func _physics_process(delta: float) -> void:
-	var velocity = Vector2.from_angle(rotation) * speed
+	var velocity = Vector2.from_angle(rotation) * speed + extra_velocity
 	var alpha = $DespawnTimer.time_left / $DespawnTimer.wait_time
 	$Sprite.modulate.a = alpha
 	position += velocity * delta

@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @export var projectile_scene: PackedScene
+@export var projectile_speed_multiplier: float = 2
 @export var speed: float = 150
 @export var extract_distance: float = 100
 @export var release_interval: float = 10
@@ -66,6 +67,7 @@ func release() -> void:
 		projectile.rotation = randf()*spread - spread/2 + last_direction.angle()
 		projectile.creator = self
 		projectile.position = position
+		projectile.extra_velocity = velocity
 
 		# Get a random belief
 		var rand_belief = randf() * total_belief
@@ -73,6 +75,7 @@ func release() -> void:
 			var amount = beliefs[belief]
 			if rand_belief < amount:
 				projectile.belief = belief
+				projectile.speed *= projectile_speed_multiplier
 				
 				if amount <= Projectile.size:
 					total_belief -= beliefs[belief]
