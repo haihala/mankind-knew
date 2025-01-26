@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://rgdltf18q5d2"]
+[gd_scene load_steps=4 format=3 uid="uid://upcdwy6w32qj"]
 
 [ext_resource type="Script" path="res://npc_spawner.gd" id="1_7trx4"]
 [ext_resource type="PackedScene" uid="uid://ddjdvmj3ommdu" path="res://npc.tscn" id="2_6m3py"]
