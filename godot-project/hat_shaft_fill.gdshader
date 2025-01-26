@@ -6,7 +6,7 @@ uniform float[5] pattern_angles;
 uniform float[5] beliefs;
 uniform float hat_height;
 
-const float roundness_squishing = 30.0;
+const float roundness_squishing = 45.0;
 const float corner_threshold = 1.0;
 const vec2 bottom_corner = vec2(0.0, corner_threshold);
 
