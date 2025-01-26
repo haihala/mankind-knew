@@ -62,7 +62,7 @@ func visualize_hat() -> void:
 	$HatShaft.position = hat_offset - Vector2(0, hh/2)
 	$HatShaft.scale.y = hh
 	$Hat.position = hat_offset - Vector2(0, hh)
-	$HatShaftFill.material.set_shader_parameter("hat_height", max(1, total_belief) * max_hat_height / 8)
+	$HatShaftFill.material.set_shader_parameter("hat_height", max(1, total_belief) * max_hat_height / 12)
 
 	var vis_beliefs = []
 	for belief in NPC.Belief.values():
