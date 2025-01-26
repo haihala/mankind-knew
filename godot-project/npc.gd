@@ -11,6 +11,8 @@ enum Belief {RED, GREEN, BLUE, PURPLE, ORANGE}
 
 @export_category("Behavior weights")
 @export var npc_influence_distance_falloff: Curve
+@export var nearby_npc_push = 5
+@export var nearby_npc_distance = 50
 @export var fellow_npc_pull = 0.1
 @export var similarity_multiplier = 1
 @export var repulsion_multiplier = 1
@@ -51,11 +53,15 @@ func update_decisions() -> void:
 		
 		var diff = npc.position - position
 		var direction = diff.normalized()
-		var distance_multiplier = npc_influence_distance_falloff.sample(diff.length() / 1000)
+		var distance = diff.length()
+		var distance_multiplier = npc_influence_distance_falloff.sample(distance / 1000)
+		var nearby_push = 0
+		if distance < nearby_npc_distance:
+			nearby_push = nearby_npc_push
 		
 		var similarity = calculate_similarity(npc)
 		var repulsion = calculate_polarization_repulsion(npc)
-		var pull = fellow_npc_pull + similarity - repulsion
+		var pull = fellow_npc_pull + similarity - repulsion - nearby_push
 		npc_influence += distance_multiplier * direction * pull
 	next_direction = (random_direction + middle_pull + npc_influence).normalized()
 
