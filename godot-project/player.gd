@@ -28,7 +28,6 @@ func _ready() -> void:
 	$HatShaftFill.position = hat_offset - Vector2(0, max_hat_height/2)
 	$HatShaftFill.material.set_shader_parameter("patterns", Colors.patterns)
 	$HatShaftFill.material.set_shader_parameter("pattern_scales", Colors.pattern_scales)
-	$HatShaftFill.material.set_shader_parameter("hat_height", max_hat_height / 8)
 	$Body.play("default")
 
 func _physics_process(delta: float) -> void:
@@ -52,9 +51,11 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func visualize_hat() -> void:
-	$HatShaft.position = hat_offset - Vector2(0, max_hat_height*hat_height/2)
-	$HatShaft.scale.y = max_hat_height*hat_height
-	$Hat.position = hat_offset - Vector2(0, max_hat_height*hat_height)
+	var hh = max_hat_height*hat_height
+	$HatShaft.position = hat_offset - Vector2(0, hh/2)
+	$HatShaft.scale.y = hh
+	$Hat.position = hat_offset - Vector2(0, hh)
+	$HatShaftFill.material.set_shader_parameter("hat_height", max(1, total_belief) * hh / 8)
 
 	var vis_beliefs = []
 	for belief in NPC.Belief.values():
