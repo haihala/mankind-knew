@@ -73,7 +73,6 @@ func release() -> void:
 		releasing = false
 	else:
 		shoot()
-		shoot()
 
 func shoot() -> void:
 	var projectile = projectile_scene.instantiate()
