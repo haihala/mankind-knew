@@ -6,6 +6,8 @@ enum Belief {RED, GREEN, BLUE, PURPLE, ORANGE}
 @export var projectile_scene: PackedScene
 @export var speed: float = 30
 @export var eyes_offset: float = 7
+@export var initial_shot_interval: float = 3
+@export var final_shot_interval: float = 0.8
 
 @export_category("Behavior weights")
 @export var npc_influence_distance_falloff: Curve
@@ -31,6 +33,7 @@ func _ready() -> void:
 		beliefs[belief] = 0
 	add_belief(initial_belief, Projectile.size)
 	update_decisions()
+	$ShotTimer.start((1+randf())*initial_shot_interval)
 
 func _physics_process(_delta: float) -> void:
 	act_on_decisions()
@@ -120,7 +123,7 @@ func add_belief(belief: Belief, amount: float) -> void:
 	else:
 		total_belief = total
 
-	$ShotTimer.wait_time = 0.5 / total_belief
+	$ShotTimer.wait_time = initial_shot_interval * (1 - total_belief) + final_shot_interval * total_belief
 
 func influence(belief: Belief) -> void:
 	add_belief(belief, Projectile.size)
