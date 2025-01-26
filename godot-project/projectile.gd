@@ -5,23 +5,31 @@ static var size = 0.2
 
 @export var speed: float = 50
 @export var sprites: Array[Texture2D] = []
-@export var sounds: Array[AudioStream] = []
+@export var npc_sounds: Array[AudioStream] = []
+@export var player_sounds: Array[AudioStream] = []
 @export_range(0, 4) var on_hit_grow: float = 1
 @export var sparkle_scene: PackedScene
 var belief: NPC.Belief
 var creator: Node
 var touched: Array[Node] = []
-var extra_velocity: Vector2 = Vector2.ZERO
-var volume_increase: float = 0
+var extra_velocity = Vector2.ZERO
 
 func _ready() -> void:
 	$Sprite.texture = sprites[belief]
 	$Sprite.rotation = -rotation
-	
+	position = creator.position
+
+	if creator is Player:
+		extra_velocity = creator.velocity
+		speed *= 2
+
 	var stats = get_tree().get_first_node_in_group("stats")
 	if not stats.done:
-		$SpawnSound.volume_db += volume_increase
-		$SpawnSound.stream = sounds.pick_random()
+		if creator is Player:
+			$SpawnSound.volume_db += 10
+			$SpawnSound.stream = player_sounds.pick_random()
+		else:
+			$SpawnSound.stream = npc_sounds.pick_random()
 		$SpawnSound.play()
 
 func _physics_process(delta: float) -> void:

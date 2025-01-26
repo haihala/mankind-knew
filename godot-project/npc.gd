@@ -82,7 +82,6 @@ func shoot(angle: float = randf()*PI*2) -> void:
 	var projectile = projectile_scene.instantiate()
 	projectile.rotation = angle
 	projectile.creator = self
-	projectile.position = position
 
 	# Get a random belief
 	var rand_belief = randf() * total_belief
