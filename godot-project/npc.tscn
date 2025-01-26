@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ddjdvmj3ommdu"]
+[gd_scene load_steps=26 format=3 uid="uid://ddjdvmj3ommdu"]
 
 [ext_resource type="Script" path="res://npc.gd" id="1_f8a8o"]
 [ext_resource type="PackedScene" uid="uid://ddly54cbm84af" path="res://projectile.tscn" id="2_rifn1"]
@@ -11,6 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://d4l8cmg46qquc" path="res://eyes.png" id="9_b2x7f"]
 [ext_resource type="Texture2D" uid="uid://c38c532l01bxn" path="res://head-outline.png" id="9_occuo"]
 [ext_resource type="Texture2D" uid="uid://bjathuci5lsn1" path="res://shadow.png" id="10_ohbyq"]
+
+[sub_resource type="Curve" id="Curve_1fkl3"]
+_data = [Vector2(0.1, 1), 0.0, 0.0, 0, 0, Vector2(0.4, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+metadata/_snap_enabled = true
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tlt4c"]
 animations = [{
@@ -89,6 +94,7 @@ script = ExtResource("1_f8a8o")
 colors = Array[Color]([Color(1, 0.207843, 0.207843, 1), Color(0, 0.827451, 0.278431, 1), Color(0, 0.666667, 1, 1), Color(0.690196, 0.113725, 0.854902, 1), Color(1, 0.788235, 0, 1)])
 border_colors = Array[Color]([Color(0.705882, 0, 0, 1), Color(0.0980392, 0.592157, 0.45098, 1), Color(0, 0.356863, 0.843137, 1), Color(0.427451, 0.00784314, 0.611765, 1), Color(0.898039, 0.435294, 0, 1)])
 projectile_scene = ExtResource("2_rifn1")
+npc_influence_distance_falloff = SubResource("Curve_1fkl3")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 z_index = -1

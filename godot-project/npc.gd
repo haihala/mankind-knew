@@ -7,10 +7,15 @@ enum Belief {RED, GREEN, BLUE, PURPLE, ORANGE}
 @export var projectile_scene: PackedScene
 @export var speed: float = 30
 @export var eyes_offset: float = 7
-@export var npc_influence_multiplier: float = 0.2
-@export var similarity_multiplier = 2
-@export var repulsion_multiplier = 4
-@export_range(0, 1) var strong_belief_threshold = 0.7
+
+@export_category("Behavior weights")
+@export var npc_influence_distance_falloff: Curve
+@export var fellow_npc_pull = 0.1
+@export var similarity_multiplier = 1
+@export var repulsion_multiplier = 1
+@export var center_pull = 0.2
+@export var randomness = 2
+@export_range(0, 1) var strong_belief_threshold = 0.6
 
 var leftover = 2 - 2*strong_belief_threshold
 var next_direction: Vector2
@@ -35,21 +40,22 @@ func _physics_process(_delta: float) -> void:
 
 func update_decisions() -> void:
 	prev_direction = next_direction
-	var random_direction = Vector2.from_angle(randf()*PI*2)
-	var middle_pull = (-position).normalized() * 0.1
+	var random_direction = Vector2.from_angle(randf()*PI*2) * randomness
+	var middle_pull = (-position).normalized() * center_pull
 	var npc_influence = Vector2.ZERO
 
 	for npc in get_tree().get_nodes_in_group("npc"):
 		if npc == self:
 			continue
 		
-		var diff = position - npc.position
+		var diff = npc.position - position
 		var direction = diff.normalized()
-		var inverse_distance = 1/diff.length()
+		var distance_multiplier = npc_influence_distance_falloff.sample(diff.length() / 1000)
 		
 		var similarity = calculate_similarity(npc)
 		var repulsion = calculate_polarization_repulsion(npc)
-		npc_influence += npc_influence_multiplier * direction * inverse_distance * (similarity - repulsion)
+		var pull = fellow_npc_pull + similarity - repulsion
+		npc_influence += distance_multiplier * direction * pull
 	next_direction = (random_direction + middle_pull + npc_influence).normalized()
 
 # From 0 to 1

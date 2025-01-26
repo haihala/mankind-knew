@@ -48,4 +48,4 @@ func collision(body: Node2D) -> void:
 		$SizeAdjustmentTimer.start()
 		# Restart despawn timer
 		# This increases the time exponentially, growing for each encounter
-		$DespawnTimer.start(1.2*$DespawnTimer.wait_time)
+		$DespawnTimer.start(1.1*$DespawnTimer.wait_time)
