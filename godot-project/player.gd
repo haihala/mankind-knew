@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var release_interval: float = 10
 @export var max_hat_height: float = 50
 @export var hat_fall_speed: float = 0.1
+@export var hat_capacity: float = 3
 @export var eyes_offset: float = 5
 @export var eyes_speed: float = 0.1
 @export_range(0, PI) var spread: float = PI/2
@@ -84,6 +85,6 @@ func release() -> void:
 
 		get_parent().add_child(projectile)
 	hat_height = 1
-func influence(belief: NPC.Belief, amount: float = 0.2) -> void:
+func influence(belief: NPC.Belief, amount: float = 0.2/hat_capacity) -> void:
 	beliefs[belief] = beliefs.get(belief, 0) + amount
 	total_belief += amount
