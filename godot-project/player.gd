@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var max_hat_height: float = 50
 @export var hat_fall_speed: float = 0.1
 @export var eyes_offset: float = 5
+@export var eyes_speed: float = 0.1
 @export_range(0, PI) var spread: float = PI/2
 
 var beliefs: Dictionary = {}
@@ -34,13 +35,13 @@ func _physics_process(delta: float) -> void:
 		last_direction = direction
 
 	z_index = int(position.y * 10)
-	$Eyes.position = last_direction * eyes_offset
 	
 	hat_height -= delta * hat_fall_speed
 	if total_belief > hat_height:
 		release()
 
 	visualize_hat()
+	move_eyes()
 	move_and_slide()
 
 func visualize_hat() -> void:
@@ -52,6 +53,11 @@ func visualize_hat() -> void:
 	for belief in NPC.Belief.values():
 		vis_beliefs.push_back(beliefs.get(belief, 0) / max(total_belief, 1))
 	$HatShaftFill.material.set_shader_parameter("beliefs", vis_beliefs)
+
+func move_eyes() -> void:
+	var target_pos = last_direction * eyes_offset
+	$Eyes.position = target_pos * eyes_speed + $Eyes.position * (1 - eyes_speed)
+
 
 func release() -> void:
 	while not beliefs.is_empty():
