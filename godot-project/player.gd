@@ -11,7 +11,7 @@ extends CharacterBody2D
 
 var beliefs: Dictionary = {}
 var total_belief: float = 0
-var last_direction: Vector2
+var last_direction: Vector2 = Vector2(1, 0)
 
 var hat_offset: Vector2
 var hat_height = 1

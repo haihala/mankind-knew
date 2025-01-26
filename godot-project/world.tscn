@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cuf140fj6iemi"]
+[gd_scene load_steps=8 format=3 uid="uid://cuf140fj6iemi"]
 
 [ext_resource type="PackedScene" uid="uid://bac4pqgj5oxjo" path="res://stats.tscn" id="1_853hc"]
 [ext_resource type="PackedScene" uid="uid://be55yifao4fp" path="res://player.tscn" id="1_uc7q8"]
 [ext_resource type="PackedScene" uid="uid://dvupfo6cbega2" path="res://wall.tscn" id="2_wy0le"]
 [ext_resource type="PackedScene" uid="uid://rgdltf18q5d2" path="res://npc_spawner.tscn" id="3_23yi1"]
 [ext_resource type="PackedScene" uid="uid://o3k8pn2ko6av" path="res://end_screen.tscn" id="5_7jo1d"]
+[ext_resource type="PackedScene" uid="uid://bg8gp75kuu2o8" path="res://clock.tscn" id="5_xshsq"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_qkyk7"]
 
@@ -36,7 +37,7 @@ collision_layer = 1
 collision_mask = 0
 
 [node name="WallTop" parent="." instance=ExtResource("2_wy0le")]
-position = Vector2(0, -344)
+position = Vector2(0, -390)
 scale = Vector2(7.875, 1)
 collision_layer = 1
 collision_mask = 0
@@ -49,6 +50,11 @@ scale = Vector2(55, 25)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer1" type="CanvasLayer" parent="."]
 
-[node name="EndScreen" parent="CanvasLayer" instance=ExtResource("5_7jo1d")]
+[node name="EndScreen" parent="CanvasLayer1" instance=ExtResource("5_7jo1d")]
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Clock" parent="CanvasLayer2" instance=ExtResource("5_xshsq")]
