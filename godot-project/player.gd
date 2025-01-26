@@ -94,7 +94,7 @@ func shoot() -> void:
 			else:
 				total_belief -= shot_cost
 				beliefs[belief] -= shot_cost
-			hat_height = total_belief
+			hat_height = min(total_belief, 1)
 			break
 		rand_belief -= amount
 

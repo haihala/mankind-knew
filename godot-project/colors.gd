@@ -1,7 +1,5 @@
 extends Node
 
-class_name Colors
-
 static var colors: Array[Color] = [
 	Color('FF3535'), 
 	Color('00D347'), 
