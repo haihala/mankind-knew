@@ -25,7 +25,7 @@ var releasing = false
 func _ready() -> void:
 	hat_offset = $HatShaft.position
 	$HatShaftFill.scale.y = max_hat_height
-	$HatShaftFill.position = hat_offset - Vector2(0, max_hat_height/2)
+	$HatShaftFill.position = hat_offset - Vector2(0, max_hat_height/2 - 2.5)
 	$HatShaftFill.material.set_shader_parameter("patterns", Colors.patterns)
 	$HatShaftFill.material.set_shader_parameter("pattern_scales", Colors.pattern_hat_scales)
 	$HatShaftFill.material.set_shader_parameter("pattern_angles", Colors.pattern_hat_angles)
