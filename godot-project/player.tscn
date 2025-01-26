@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://be55yifao4fp"]
+[gd_scene load_steps=20 format=3 uid="uid://be55yifao4fp"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_n0b4w"]
 [ext_resource type="PackedScene" uid="uid://ddly54cbm84af" path="res://projectile.tscn" id="2_j4an7"]
@@ -8,7 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://b674dpymmg5lc" path="res://player-walk-1.png" id="5_7vk7d"]
 [ext_resource type="Texture2D" uid="uid://c2nudj16orlhr" path="res://player-walk-2.png" id="6_t84eb"]
 [ext_resource type="Texture2D" uid="uid://d4l8cmg46qquc" path="res://eyes.png" id="7_pls7t"]
+[ext_resource type="Texture2D" uid="uid://5068kajfyy7n" path="res://pattern-square-red.png" id="8_bcnqm"]
 [ext_resource type="Texture2D" uid="uid://g3lc7mlgfytf" path="res://player-hat.png" id="8_fusqb"]
+[ext_resource type="Texture2D" uid="uid://cnkps08jya3p8" path="res://pattern-square-purple.png" id="8_k1brg"]
+[ext_resource type="Texture2D" uid="uid://bsguaa66jykx2" path="res://pattern-square-green.png" id="9_3sxa1"]
+[ext_resource type="Texture2D" uid="uid://bhjk5wj7alp2t" path="res://pattern-square-blue.png" id="10_ccwob"]
+[ext_resource type="Texture2D" uid="uid://uxt7pmu48ah3" path="res://pattern-square-yellow.png" id="12_ibi7d"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t7wc1"]
 radius = 8.0
@@ -30,11 +35,11 @@ animations = [{
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ko1ec"]
 shader = ExtResource("4_wc2p6")
-shader_parameter/pattern_scales = null
-shader_parameter/pattern_angles = null
-shader_parameter/beliefs = PackedFloat32Array(0.194, 0.556)
-shader_parameter/hat_height = null
-shader_parameter/patterns = null
+shader_parameter/colors = PackedColorArray(1, 0.207843, 0.207843, 1, 0, 0.827451, 0.278431, 1, 0, 0.666667, 1, 1, 0.690196, 0.113725, 0.854902, 1, 1, 0.788235, 0, 1)
+shader_parameter/pattern_scales = PackedFloat32Array(3, 0.5, 1, 1.5, 0.4)
+shader_parameter/beliefs = PackedFloat32Array(0.287, 0.104, 0.181, 0.165, 0.113)
+shader_parameter/hat_height = 3.0
+shader_parameter/patterns = Array[Texture2D]([ExtResource("8_bcnqm"), ExtResource("9_3sxa1"), ExtResource("10_ccwob"), ExtResource("8_k1brg"), ExtResource("12_ibi7d")])
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_xx132"]
 
