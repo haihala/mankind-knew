@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://be55yifao4fp"]
+[gd_scene load_steps=15 format=3 uid="uid://be55yifao4fp"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_n0b4w"]
 [ext_resource type="PackedScene" uid="uid://ddly54cbm84af" path="res://projectile.tscn" id="2_j4an7"]
+[ext_resource type="Texture2D" uid="uid://bjathuci5lsn1" path="res://shadow.png" id="3_3uogr"]
 [ext_resource type="Texture2D" uid="uid://hkshnlbh4jy5" path="res://player-head.png" id="3_423n1"]
 [ext_resource type="Shader" path="res://hat_shaft_fill.gdshader" id="4_wc2p6"]
 [ext_resource type="Texture2D" uid="uid://b674dpymmg5lc" path="res://player-walk-1.png" id="5_7vk7d"]
@@ -48,6 +49,11 @@ projectile_scene = ExtResource("2_j4an7")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4.392)
 shape = SubResource("CapsuleShape2D_t7wc1")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(0, 21.546)
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("3_3uogr")
 
 [node name="Body" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 16.736)
