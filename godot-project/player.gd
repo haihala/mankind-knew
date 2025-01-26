@@ -19,6 +19,7 @@ var last_direction: Vector2 = Vector2(1, 0)
 
 var hat_offset: Vector2
 var hat_height = 1
+var shot_cost = Projectile.size / hat_capacity
 var releasing = false
 
 func _ready() -> void:
@@ -72,6 +73,7 @@ func release() -> void:
 		releasing = false
 	else:
 		shoot()
+		shoot()
 
 func shoot() -> void:
 	var projectile = projectile_scene.instantiate()
@@ -85,12 +87,12 @@ func shoot() -> void:
 		if rand_belief < amount:
 			projectile.belief = belief
 			
-			if amount <= Projectile.size:
+			if amount <= shot_cost:
 				total_belief -= beliefs[belief]
 				beliefs.erase(belief)
 			else:
-				beliefs[belief] -= Projectile.size
-				total_belief -= Projectile.size
+				total_belief -= shot_cost
+				beliefs[belief] -= shot_cost
 			hat_height = total_belief
 			break
 		rand_belief -= amount
